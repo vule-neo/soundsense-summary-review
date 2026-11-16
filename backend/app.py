@@ -5,6 +5,7 @@ from fastapi import FastAPI, HTTPException
 
 from backend.calls import ROOT, load_calls
 from backend.checks import run_checks
+from backend.strict import apply_strict_gate
 from backend.verify import enrich_analysis
 
 ANALYSIS_DIR = ROOT / "analysis"
@@ -19,18 +20,24 @@ def load_analysis(call_id: str) -> dict | None:
     if not path.exists():
         return None
     result = json.loads(path.read_text(encoding="utf-8"))
-    result["analysis"] = enrich_analysis(load_calls()[call_id], result["analysis"])
+    call = load_calls()[call_id]
+    result["analysis"] = enrich_analysis(call, result["analysis"])
+    apply_strict_gate(call, result["analysis"], run_checks(call))
     return result
 
 
 def severity_counts(call_id: str) -> dict:
     """Count issues across AI claims, omissions and rule checks."""
-    counts = {s: 0 for s in SEVERITIES}
+    counts = {s: 0 for s in SEVERITIES} | {"to_check": 0, "verified": 0}
     result = load_analysis(call_id)
     if result:
         a = result["analysis"]
         for c in a["claims"]:
-            if c["verdict"] != "supported" and c["severity"] in counts:
+            if c["verdict"] == "supported":
+                counts["verified"] += 1
+            elif c["verdict"] == "uncertain":
+                counts["to_check"] += 1
+            elif c["severity"] in counts:
                 counts[c["severity"]] += 1
         for o in a["omissions"]:
             if o["severity"] in counts:

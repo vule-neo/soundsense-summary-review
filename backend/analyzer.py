@@ -31,10 +31,19 @@ Dataset conventions:
 - Secure card/bank entry is redacted; "Transcript note" turns describe what happened.
 </review_scope>
 
+<verdict_standard>
+"supported" is shown to reviewers in green and they may skip it when busy, so it must be EARNED. Mark a claim "supported" only if you are 100% certain that EVERY element of it is explicitly stated in the transcript AND it complies with the rules:
+- every amount, date, time, duration, count and frequency matches the transcript's final position exactly (e.g. "at 2 pm" is NOT supported by "after two"; "monthly" is not supported if the frequency was never said);
+- who did what is explicit (who called whom, who agreed, who declined, who was told what);
+- nothing is inferred, generalised, softened or strengthened (e.g. "checked understanding" needs a turn where the agent actually checks and the customer confirms);
+- you can quote verbatim evidence for each element.
+If ANY element is inferred, approximate, only partly supported, depends on interpretation, or you have even slight doubt, use "uncertain" and say in `explanation` exactly which element the reviewer must check. Use "contradicted", "unsupported" or "rule_breach" when you are confident it is wrong. Never choose "supported" just because a claim is plausible.
+</verdict_standard>
+
 <severity>
 - critical: could cause regulatory/compliance harm or financial loss if trusted — wrong or invented payment/promise amounts or dates; payment recorded as made when it was not (or vice versa); consent or Authority to Act misstated; a required "risk of further action" warning, I&E refusal, wrong-person or third-party status missing or wrong; severe hardship (no money for food, bereavement, frozen accounts) dropped.
 - major: a material fact wrong or a mandatory element missing — wrong call direction, wrong hold length, unsupported events (e.g. a default notice that was never mentioned), missing "customer signposted", missing specific cause of non-payment, privacy/anonymity breach, stated arrears or payment-taken amounts.
-- minor: small imprecision unlikely to mislead (e.g. "at 2 pm" vs "after two"), style or wording issues.
+- minor: small imprecision unlikely to mislead (e.g. "at 2 pm" vs "after two"), style or wording issues. Use at least "minor" for every "uncertain" claim.
 - none: supported.
 </severity>
 
