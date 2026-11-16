@@ -1,0 +1,2 @@
+# Runtime dependencies for the Vercel Python function (api/index.py)
+fastapi==0.163.1

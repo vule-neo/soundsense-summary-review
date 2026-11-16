@@ -16,3 +16,6 @@ next-env.d.ts
 .DS_Store
 Thumbs.db
 .vscode/
+.venv/
+__pycache__/
+*.pyc
