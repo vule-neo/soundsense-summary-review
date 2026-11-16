@@ -1,6 +1,5 @@
 # secrets
-.env
-.env*.local
+.env*
 
 # dependencies / build
 node_modules/
