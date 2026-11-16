@@ -1,0 +1,303 @@
+{
+  "call_id": "CALL-007",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:26+00:00",
+  "usage": {
+    "input_tokens": 1436,
+    "output_tokens": 2106,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "accurate",
+    "headline": "Summary is accurate and rule-compliant; all key facts (DPA, outbound call, payment made, DD from 16 November, email check within three working days) are supported.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode verified.",
+        "rule": "DPA",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "your name, date of birth and address match. Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The company called and reached the customer, and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent opened the call asking for the customer, who confirmed; the missed instalment/arrears was discussed, with no amount stated.",
+        "rule": "Arrears/Balances",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "could I speak to Ben Brooks, please?"
+          },
+          {
+            "turn_id": "T07",
+            "quote": "There's one missed instalment showing as arrears."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A bank change was not saved after the customer lost signal, leaving the Direct Debit linked to the old account.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer's online bank detail update did not save after losing signal; old account still attached.",
+        "rule": "Specificity",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "my phone lost signal on the train"
+          },
+          {
+            "turn_id": "T09",
+            "quote": "the old account is still attached to the Direct Debit"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The agent checked the customer’s understanding;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer summarised the plan and the agent confirmed it.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "That's what I need to do?"
+          },
+          {
+            "turn_id": "T24",
+            "quote": "Yes, that's correct."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Payment made,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Card payment succeeded; no amount given, as required.",
+        "rule": "Immediate Payments",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "The payment has been successful."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and a new Direct Debit instruction was set up for scheduled instalments starting on 16 November.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "New DD set up for future instalments starting 16 November.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "starting on the sixteenth of November"
+          },
+          {
+            "turn_id": "T20",
+            "quote": "The new instruction is set up."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "16 November",
+            "kind": "date",
+            "turn_ids": [
+              "T17",
+              "T18"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The next steps are to check the emailed confirmation and call the company if it has not arrived within three working days.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Matches the agent's instructions.",
+        "rule": "Terminology",
+        "evidence": [
+          {
+            "turn_id": "T20",
+            "quote": "Please check the account details in that confirmation when it arrives."
+          },
+          {
+            "turn_id": "T22",
+            "quote": "Call us if you haven't received it within three working days."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "three working days",
+            "kind": "duration",
+            "turn_ids": [
+              "T22"
+            ]
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Outbound",
+        "summary_value": "Company called the customer",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "One missed instalment in arrears",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "one missed instalment showing as arrears"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Bank detail change did not save after losing signal",
+        "summary_value": "Bank change not saved after losing signal",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "my phone lost signal on the train"
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "Card payment successful",
+        "summary_value": "Payment made",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "The payment has been successful."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "New DD from 16 November",
+        "summary_value": "New DD from 16 November",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "starting on the sixteenth of November"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Check email; call if not received within three working days",
+        "summary_value": "Same",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "within three working days"
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}

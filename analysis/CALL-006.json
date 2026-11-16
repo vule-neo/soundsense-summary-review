@@ -1,0 +1,305 @@
+{
+  "call_id": "CALL-006",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:25+00:00",
+  "usage": {
+    "input_tokens": 1515,
+    "output_tokens": 2336,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "accurate",
+    "headline": "Summary is accurate and rule-compliant: DPA, third-party authority for this call only, cause, £220 promise on 30 October and 2 November review are all supported.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address were verified and the agent confirmed security was complete.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "your name, date of birth and address match. Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company with their mother, whose Authority to Act was verified for this call only, and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer called in, the mother joined, authority was given for this call only, and arrears were discussed without stating amounts.",
+        "rule": "Authority to Act",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help?"
+          },
+          {
+            "turn_id": "T09",
+            "quote": "I'll record permission for this call only."
+          },
+          {
+            "turn_id": "T11",
+            "quote": "Authority to Act has been verified for this call."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A change from weekly to monthly wages caused the missed instalment.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer started a new job paying monthly instead of weekly and mistimed the payment; the Direct Debit came out before wages.",
+        "rule": "Specificity",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Old place paid weekly, this one's monthly."
+          },
+          {
+            "turn_id": "T10",
+            "quote": "the Direct Debit came out before her wages"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The agent checked affordability and the customer’s understanding,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent asked about affordability for food, rent and travel and asked the customer to explain their understanding.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "Are you comfortable that leaves enough for food, rent and travel"
+          },
+          {
+            "turn_id": "T21",
+            "quote": "Can you tell me what you've understood about the arrangement?"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the customer agreed to pay £220 by bank transfer on 30 October using their account reference, with the regular schedule unchanged.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Final agreed promise is £220 on 30 October by bank transfer with the account reference; regular payments are unchanged.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "two hundred and twenty pounds, on the thirtieth of October. By bank transfer."
+          },
+          {
+            "turn_id": "T19",
+            "quote": "The regular schedule remains unchanged."
+          },
+          {
+            "turn_id": "T20",
+            "quote": "I'll use the reference from the letter."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£220",
+            "kind": "amount",
+            "turn_ids": [
+              "T15",
+              "T22"
+            ]
+          },
+          {
+            "text": "30 October",
+            "kind": "date",
+            "turn_ids": [
+              "T15"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The next steps are for the company to review receipt on 2 November and contact the customer if the transfer has not arrived.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent said they will review receipt on 2 November and make contact if the transfer has not arrived.",
+        "rule": "Next Steps",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "We'll review receipt on the second of November and contact you if the transfer hasn't arrived."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "2 November",
+            "kind": "date",
+            "turn_ids": [
+              "T23"
+            ]
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Inbound",
+        "summary_value": "Customer called the company",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T02",
+            "quote": "Have I come through to the right team?"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "Mother, authority verified for this call only",
+        "summary_value": "Authority verified for this call only",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T11",
+            "quote": "Authority to Act has been verified for this call."
+          }
+        ]
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "One missed instalment, arrears discussed",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T11",
+            "quote": "arrears were discussed with your daughter"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "New job paid monthly rather than weekly; Direct Debit before wages",
+        "summary_value": "Change from weekly to monthly wages",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Old place paid weekly, this one's monthly."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "Not discussed",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "Affordability checked, no full I&E",
+        "summary_value": "Agent checked affordability",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "enough for food, rent and travel"
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "Not warned",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment taken",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "£220 on 30 October by bank transfer",
+        "summary_value": "£220 by bank transfer on 30 October",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "two hundred and twenty pounds, on the thirtieth of October"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Review receipt on 2 November, contact if not arrived",
+        "summary_value": "Review receipt on 2 November and contact if not arrived",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "We'll review receipt on the second of November"
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}

@@ -1,0 +1,388 @@
+{
+  "call_id": "CALL-020",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:57+00:00",
+  "usage": {
+    "input_tokens": 1451,
+    "output_tokens": 2827,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary records a £80 promise to pay on 23 October that the customer explicitly did not agree to (T16, T17, T22), and omits the risk of further action warning.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode were verified.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer called in; agent opened with a general greeting.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help?"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "arrears and a default notice were discussed,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Arrears and the default notice were discussed without stating amounts.",
+        "rule": "Arrears/Balances",
+        "evidence": [
+          {
+            "turn_id": "T06",
+            "quote": "I've had the default notice"
+          },
+          {
+            "turn_id": "T07",
+            "quote": "There are arrears following missed instalments."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and emergency childcare during a three-day school closure caused a shortfall.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Cause is stated specifically, but the £210 childcare cost, a situational cost, is omitted. Minor.",
+        "rule": "Situational Costs",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "that cost two hundred and ten pounds"
+          },
+          {
+            "turn_id": "T12",
+            "quote": "Three days, a heating problem."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "three-day",
+            "kind": "duration",
+            "turn_ids": [
+              "T12"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The customer declined an I&E assessment today,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer explicitly refused the assessment.",
+        "rule": "I&E Refusal",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "I don't want to do an assessment today."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the agent checked understanding that neither the notice nor all arrears were resolved.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent confirmed customer understood the payment does not resolve the arrears or notice.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "You've understood the difference."
+          },
+          {
+            "turn_id": "T19",
+            "quote": "this payment doesn't resolve all the arrears or cancel the notice"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Payment made.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Payment was successful and no amount is stated, as required.",
+        "rule": "Immediate Payments",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "The fifty-pound payment has been successful."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The next steps are to read the notice, prepare income and essential expense figures and call on 23 October after work to review affordability;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Matches the plan; the agent's 'Friday' in T25 is 23 October.",
+        "rule": "Terminology",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "call on the twenty-third of October"
+          },
+          {
+            "turn_id": "T23",
+            "quote": "Please have your income and essential expense figures available"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "23 October",
+            "kind": "date",
+            "turn_ids": [
+              "T21"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "the customer agreed to pay £80 on 23 October.",
+        "verdict": "contradicted",
+        "severity": "critical",
+        "explanation": "The customer withdrew the £80 and the agent confirmed it would not be recorded as a promise.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "don't write Friday down as agreed"
+          },
+          {
+            "turn_id": "T17",
+            "quote": "we won't record the eighty as a promise"
+          },
+          {
+            "turn_id": "T22",
+            "quote": "I haven't promised eighty"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£80",
+            "kind": "amount",
+            "turn_ids": [
+              "T16",
+              "T17",
+              "T22"
+            ]
+          },
+          {
+            "text": "23 October",
+            "kind": "date",
+            "turn_ids": [
+              "T21"
+            ]
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Inbound",
+        "summary_value": "Customer called the company",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help?"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Full DPA completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Arrears and default notice discussed",
+        "summary_value": "Arrears and default notice discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "There are arrears following missed instalments."
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Emergency childcare (£210) during three-day school closure",
+        "summary_value": "Emergency childcare during three-day school closure",
+        "status": "match",
+        "severity": "minor",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "that cost two hundred and ten pounds"
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "Customer declined I&E",
+        "summary_value": "Customer declined I&E assessment today",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "I don't want to do an assessment today."
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "Agent warned account remains at risk of further action",
+        "summary_value": "",
+        "status": "missing_in_summary",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "the account remains at risk of further action"
+          }
+        ]
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "£50 card payment successful",
+        "summary_value": "Payment made",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "The fifty-pound payment has been successful."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "No promise; £80 explicitly not recorded",
+        "summary_value": "Agreed to pay £80 on 23 October",
+        "status": "mismatch",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "we won't record the eighty as a promise"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Read notice, have figures ready, call on 23 October",
+        "summary_value": "Read notice, prepare figures, call on 23 October after work",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "call on the twenty-third of October"
+          }
+        ]
+      }
+    ],
+    "omissions": [
+      {
+        "title": "Risk of further action warning not reported",
+        "detail": "The agent explicitly warned that the account remains at risk of further action despite the payment. The rules require this phrase.",
+        "rule": "Risk of Further Action",
+        "severity": "critical",
+        "suggested_wording": "The customer was warned of the risk of further action.",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "the account remains at risk of further action"
+          }
+        ]
+      },
+      {
+        "title": "Childcare cost not stated",
+        "detail": "The £210 childcare cost is a situational cost affecting ability to pay and should be included.",
+        "rule": "Situational Costs",
+        "severity": "minor",
+        "suggested_wording": "Emergency childcare costing £210 during a three-day school closure caused a shortfall.",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "that cost two hundred and ten pounds"
+          }
+        ]
+      }
+    ],
+    "ignored_turns": []
+  }
+}

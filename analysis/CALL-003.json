@@ -1,0 +1,424 @@
+{
+  "call_id": "CALL-003",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:20+00:00",
+  "usage": {
+    "input_tokens": 1510,
+    "output_tokens": 3253,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary claims consent to record anxiety, but the customer refused it (T10); it also states the arrears amount and omits that the customer has no money for food.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode were given and verified.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "those details are verified"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent opened with a general greeting and the customer explained their query.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help today?"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and arrears of £460 were discussed.",
+        "verdict": "rule_breach",
+        "severity": "major",
+        "explanation": "The arrears amount was stated, which the rules forbid; only 'arrears were discussed' is allowed.",
+        "rule": "Arrears/Balances",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "arrears of four hundred and sixty pounds"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£460",
+            "kind": "amount",
+            "turn_ids": [
+              "T05"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The customer’s partner left taking all joint savings, their zero-hour warehouse contract provided no shifts this week, and they reported anxiety;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Partner leaving with the savings, zero-hours contract, no shifts this week and anxiety were all stated. The warehouse mention is a generic workplace description rather than a named entity.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T06",
+            "quote": "He took the money from our joint savings, all of it."
+          },
+          {
+            "turn_id": "T08",
+            "quote": "Two last week, none this week."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Consent gained to record vulnerability.",
+        "verdict": "contradicted",
+        "severity": "critical",
+        "explanation": "The customer explicitly declined to have the health information recorded and the agent agreed not to record it.",
+        "rule": "Consent",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "I'd rather you didn't write the health bit down."
+          },
+          {
+            "turn_id": "T11",
+            "quote": "I won't record that health information."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The I&E assessment was deferred until the rota is available,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "I&E was postponed until the customer has their rota.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Can we do it when I've got the rota?"
+          },
+          {
+            "turn_id": "T13",
+            "quote": "Yes, we can do it then."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "the agent explained possible credit file impact,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent said the hold cannot be promised to prevent credit file impact.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "I can't promise it will prevent any credit file impact."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the customer was referred to Citizens Advice and customer signposted to the company website for support,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Citizens Advice and the company website support page were both suggested, and the required phrase is used.",
+        "rule": "Signposting",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Citizens Advice can help with your money situation"
+          },
+          {
+            "turn_id": "T19",
+            "quote": "Our company website also has a support page"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "with the agent checking the customer’s understanding.",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The agent asked 'Would those be useful?' and later confirmed the plan, but there was no explicit understanding check.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Would those be useful?"
+          },
+          {
+            "turn_id": "T23",
+            "quote": "That's right."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A thirty-day hold on collection contact was applied,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent confirmed the thirty-day hold was applied.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "I've applied the thirty-day hold."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "thirty-day",
+            "kind": "duration",
+            "turn_ids": [
+              "T17",
+              "T21"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "and the next steps are to seek advice before the company calls on 4 November to review the position and complete the I&E assessment.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The call on the fourth of November is to review the position and complete I&E.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "we'll call on the fourth of November to review the position"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "4 November",
+            "kind": "date",
+            "turn_ids": [
+              "T21"
+            ]
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Inbound",
+        "summary_value": "Customer called the company",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help today?"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Full DPA verified",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "those details are verified"
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Two missed instalments, arrears discussed",
+        "summary_value": "Arrears of £460 discussed",
+        "status": "mismatch",
+        "severity": "major",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "two missed instalments"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Partner left with joint savings; zero-hours shifts reduced",
+        "summary_value": "Partner left taking joint savings, no shifts this week",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T06",
+            "quote": "He took the money from our joint savings"
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "No money for food, anxiety and not sleeping",
+        "summary_value": "Anxiety reported; no mention of lack of money for food",
+        "status": "mismatch",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "I've got no money for food just now."
+          }
+        ]
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "Customer declined consent to record health information",
+        "summary_value": "Consent gained to record vulnerability",
+        "status": "mismatch",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "I don't want that in my file."
+          }
+        ]
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "I&E deferred until rota available",
+        "summary_value": "I&E deferred until the rota is available",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Can we do it when I've got the rota?"
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "Not warned",
+        "summary_value": "",
+        "status": "not_in_transcript",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "Citizens Advice and website support page",
+        "summary_value": "Referred to Citizens Advice, customer signposted to website",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Our company website also has a support page"
+          }
+        ]
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "Thirty-day hold applied",
+        "summary_value": "Thirty-day hold applied",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "I've applied the thirty-day hold."
+          }
+        ]
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment taken",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "We've agreed no payment today."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "No promise to pay",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "We've agreed no payment today."
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Seek advice; company calls 4 November to review and complete I&E",
+        "summary_value": "Seek advice; call on 4 November to review and complete I&E",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "we'll call on the fourth of November"
+          }
+        ]
+      }
+    ],
+    "omissions": [
+      {
+        "title": "Severe hardship (no money for food) omitted",
+        "detail": "The customer said they have no money for food and rely on their sister for shopping. The rules require severe hardship to be stated specifically.",
+        "rule": "Severe Hardship Specifics",
+        "severity": "critical",
+        "suggested_wording": "Customer stated they have no money for food.",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "I've got no money for food just now."
+          }
+        ]
+      },
+      {
+        "title": "Customer declined to have vulnerability recorded",
+        "detail": "The customer asked that the health information not be recorded and the agent agreed. The summary should reflect this instead of claiming consent.",
+        "rule": "Consent",
+        "severity": "major",
+        "suggested_wording": "Customer declined consent to record the health vulnerability.",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "I'd rather you didn't write the health bit down."
+          }
+        ]
+      }
+    ],
+    "ignored_turns": [
+      {
+        "turn_id": "T15",
+        "reason": "Hold-music ASR hallucination ('Thank you for watching')."
+      }
+    ]
+  }
+}

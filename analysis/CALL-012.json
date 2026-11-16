@@ -1,0 +1,344 @@
+{
+  "call_id": "CALL-012",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:40+00:00",
+  "usage": {
+    "input_tokens": 1499,
+    "output_tokens": 2650,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary says the father's Authority to Act was 'ongoing', but it was verified for this call only (T08, T09, T23).",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode were verified and the agent confirmed security was complete.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company with their father, whose ongoing Authority to Act was verified, and arrears were discussed.",
+        "verdict": "contradicted",
+        "severity": "critical",
+        "explanation": "Authority was verified for this call only, and the customer explicitly said she did not want him added for future calls. 'Ongoing' misstates it. The customer did call in, with her father, and arrears were discussed.",
+        "rule": "Authority to Act",
+        "evidence": [
+          {
+            "turn_id": "T09",
+            "quote": "Authority to Act is verified for this call only."
+          },
+          {
+            "turn_id": "T08",
+            "quote": "I don't need him added for future calls."
+          },
+          {
+            "turn_id": "T23",
+            "quote": "Dad's permission is just for this call."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "ongoing",
+            "kind": "other",
+            "turn_ids": [
+              "T08",
+              "T09",
+              "T23"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "A lack of agency shifts on a zero-hour contract caused the missed payments, and future shifts remained uncertain.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer cited a lack of agency shifts in September and a zero-hour contract, and the father said the shifts may not continue.",
+        "rule": "Specificity",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "the agency didn't give me shifts in September. I'm on a zero-hour contract."
+          },
+          {
+            "turn_id": "T13",
+            "quote": "we don't know if they'll keep them going"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "zero-hour contract",
+            "kind": "other",
+            "turn_ids": [
+              "T12"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The I&E assessment was deferred until the payslip and rota are available,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer asked to do the assessment on Friday once she has the payslip and rota, and the agent agreed.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "I'll have the payslip then and the rota for November."
+          },
+          {
+            "turn_id": "T16",
+            "quote": "we can arrange the assessment"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "possible credit file impact for the account holder was explained,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent said the missed payments may affect the account holder's credit file.",
+        "rule": "Consequences",
+        "evidence": [
+          {
+            "turn_id": "T18",
+            "quote": "The missed payments may affect the account holder's credit file"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the agent checked the customer’s understanding.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent asked the customer to confirm what had been agreed and the customer repeated the plan back.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "Can you confirm what we've agreed today?"
+          },
+          {
+            "turn_id": "T23",
+            "quote": "No payment promise today."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The next steps are for the customer to prepare income and essential expense figures for the company’s call on 23 October after 3 pm;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Friday is 23 October, and the agent requested a call after three. The customer was told to have essential expenses ready.",
+        "rule": "Next steps",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "I've requested a call after three on the twenty-third."
+          },
+          {
+            "turn_id": "T24",
+            "quote": "Have your essential expenses ready as well"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "23 October",
+            "kind": "date",
+            "turn_ids": [
+              "T16",
+              "T22"
+            ]
+          },
+          {
+            "text": "after 3 pm",
+            "kind": "time",
+            "turn_ids": [
+              "T21",
+              "T22"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "no payment commitment was made.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "No payment amount was agreed.",
+        "rule": "Promises to Pay",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "No payment promise today."
+          }
+        ],
+        "key_terms": []
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Inbound; the customer called the company.",
+        "summary_value": "The customer called the company.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help?"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Name, DOB and address verified.",
+        "summary_value": "DPA completed.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "Father authorised for this call only; not for future calls.",
+        "summary_value": "Father's ongoing Authority to Act was verified.",
+        "status": "mismatch",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T09",
+            "quote": "Authority to Act is verified for this call only."
+          }
+        ]
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Arrears after two missed instalments were discussed.",
+        "summary_value": "Arrears were discussed.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T11",
+            "quote": "The letter refers to arrears after two missed instalments."
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "The agency gave no shifts in September; zero-hour contract.",
+        "summary_value": "A lack of agency shifts on a zero-hour contract.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "the agency didn't give me shifts in September."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "No vulnerability disclosed.",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "Not discussed.",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "The I&E assessment was deferred to Friday 23 October after 3 pm.",
+        "summary_value": "The I&E assessment was deferred until payslip and rota are available.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "we can arrange the assessment for the twenty-third of October."
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "No explicit warning given.",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "None.",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "None.",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment taken.",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "No payment promise.",
+        "summary_value": "No payment commitment was made.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "No payment promise today."
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Call on 23 October after 3 pm for I&E; customer to prepare figures.",
+        "summary_value": "Customer to prepare figures for the call on 23 October after 3 pm.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "I've requested a call after three on the twenty-third."
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}

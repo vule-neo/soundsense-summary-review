@@ -1,0 +1,310 @@
+{
+  "call_id": "CALL-016",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:51+00:00",
+  "usage": {
+    "input_tokens": 1472,
+    "output_tokens": 2248,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary states the immediate payment amount (£230), breaching the rule to only say \"Payment made\" (T10, T14).",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode verified.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "your name, date of birth and address match. Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer rang in; agent confirmed arrears without stating amounts.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T02",
+            "quote": "it's about my car finance account"
+          },
+          {
+            "turn_id": "T07",
+            "quote": "There are arrears from the instalment that was returned."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A misunderstanding of pending and available bank balances left insufficient funds for the Direct Debit.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer confused pending and available balance, so insufficient funds when taken.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "Not enough in there when they actually took it. I got confused between the pending balance and the available one."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The agent checked the customer’s understanding;",
+        "verdict": "unsupported",
+        "severity": "minor",
+        "explanation": "It was the customer who recapped and asked for confirmation; the agent only confirmed it. Agent did not check understanding proactively.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "Have I got all that right?"
+          },
+          {
+            "turn_id": "T22",
+            "quote": "Yes, that's correct."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Payment of £230 made,",
+        "verdict": "rule_breach",
+        "severity": "major",
+        "explanation": "Payment was made, but the amount of an immediate payment must not be stated; should say \"Payment made.\"",
+        "rule": "Immediate Payments",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "The payment has gone through successfully"
+          },
+          {
+            "turn_id": "T10",
+            "quote": "It's two hundred and thirty pounds, isn't it?"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£230",
+            "kind": "amount",
+            "turn_ids": [
+              "T10",
+              "T11"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "and the existing Direct Debit remains active with the next collection on 10 November.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent confirmed DD active and next collection 10 November.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "The next scheduled collection is on the tenth of November."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "10 November",
+            "kind": "date",
+            "turn_ids": [
+              "T16",
+              "T21"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The next steps are to retain the emailed payment confirmation, check the bank’s balance display, ensure funds are available for collection and contact the company if the confirmation differs.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Matches the agent's advice on confirmation, bank check, funds and contacting if different.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T20",
+            "quote": "Keep the payment confirmation and make sure funds are available"
+          },
+          {
+            "turn_id": "T22",
+            "quote": "If anything looks different from what we've discussed, contact us"
+          }
+        ],
+        "key_terms": []
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Inbound",
+        "summary_value": "Customer called the company",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T02",
+            "quote": "Have I come through to the right team?"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "Customer only",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "nobody else is here"
+          }
+        ]
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Arrears from returned instalment",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "There are arrears"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Confused pending and available balance; insufficient funds",
+        "summary_value": "Misunderstanding of pending vs available balances",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "I got confused between the pending balance and the available one."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "Not discussed",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "Not warned",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "Suggested checking with bank; no signposting",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T18",
+            "quote": "You can check with the bank how their available balance works"
+          }
+        ]
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "Card payment successful",
+        "summary_value": "Payment of £230 made",
+        "status": "mismatch",
+        "severity": "major",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "The payment has gone through successfully"
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "None; DD continues",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "The Direct Debit instruction is still active."
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Keep confirmation, ensure funds for 10 Nov DD, contact if different",
+        "summary_value": "Same",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T20",
+            "quote": "make sure funds are available for the scheduled Direct Debit"
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}

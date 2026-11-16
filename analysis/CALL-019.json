@@ -1,0 +1,372 @@
+{
+  "call_id": "CALL-019",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:55+00:00",
+  "usage": {
+    "input_tokens": 1505,
+    "output_tokens": 2600,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary wrongly says the customer called the company (the agent called, T01) and omits consent to record vulnerability.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address verified.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "your name, date of birth and address match"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company, and arrears were discussed.",
+        "verdict": "contradicted",
+        "severity": "major",
+        "explanation": "The agent called the customer (outbound); arrears discussion is correct.",
+        "rule": "Call direction",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          },
+          {
+            "turn_id": "T07",
+            "quote": "there's a missed instalment and arrears showing"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Absence from work due to depression reduced monthly income by £500 when full pay ended; the customer disclosed the condition.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Sick with depression, sick pay roughly £500 less per month. Consent is not mentioned.",
+        "rule": "Consent",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "It's roughly five hundred pounds less a month."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£500",
+            "kind": "amount",
+            "turn_ids": [
+              "T08"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "An I&E assessment was arranged,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "I&E call arranged.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "We can call on the twenty-third of October after two to complete it."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "the customer was referred to StepChange and customer signposted to the company website,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "StepChange and website both mentioned.",
+        "rule": "Signposting",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "StepChange can provide free debt advice"
+          },
+          {
+            "turn_id": "T17",
+            "quote": "support page on our company website"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the agent checked understanding of the contact hold and possible credit file impact.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer confirmed understanding after hold and credit file explanation.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "guarantee that there won't be a credit file impact"
+          },
+          {
+            "turn_id": "T22",
+            "quote": "I understand."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A seven-day hold on collection contact was applied while retaining the agreed assessment call;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Seven-day hold applied.",
+        "rule": "Forbearance",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "I've applied a seven-day hold on collection contact"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "seven-day",
+            "kind": "duration",
+            "turn_ids": [
+              "T19"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "the next steps are to prepare financial figures with the support worker, seek advice and take the company’s call on 23 October at 2 pm;",
+        "verdict": "supported",
+        "severity": "minor",
+        "explanation": "23 October is Friday; the call is 'after two', so 'at 2 pm' is slightly imprecise.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "twenty-third of October after two"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "23 October",
+            "kind": "date",
+            "turn_ids": [
+              "T15"
+            ]
+          },
+          {
+            "text": "2 pm",
+            "kind": "time",
+            "turn_ids": [
+              "T15",
+              "T22"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "no payment was agreed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer confirmed no payment agreed.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "No payment agreed today"
+          }
+        ],
+        "key_terms": []
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Outbound",
+        "summary_value": "Customer called company",
+        "status": "mismatch",
+        "severity": "major",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "Customer himself",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Missed instalment and arrears",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "missed instalment and arrears showing"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Off sick with depression, income down about £500",
+        "summary_value": "Depression absence reduced income by £500",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "off sick with depression"
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "Depression, reduced pay",
+        "summary_value": "Customer disclosed the condition",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "I'm off sick with depression."
+          }
+        ]
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "Consent given",
+        "summary_value": "",
+        "status": "missing_in_summary",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "Yes, you can record that."
+          }
+        ]
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "I&E arranged for 23 October after two",
+        "summary_value": "I&E assessment arranged",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "complete it"
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "Not warned",
+        "summary_value": "",
+        "status": "not_in_transcript",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "StepChange and website",
+        "summary_value": "StepChange, website signposted",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "StepChange can provide free debt advice"
+          }
+        ]
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "Seven-day hold",
+        "summary_value": "Seven-day hold",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "seven-day hold"
+          }
+        ]
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "No payment agreed",
+        "summary_value": "No payment agreed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "No payment agreed today"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Prepare figures, I&E call 23 October after two",
+        "summary_value": "Same, at 2 pm",
+        "status": "match",
+        "severity": "minor",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "If the call time doesn't work"
+          }
+        ]
+      }
+    ],
+    "omissions": [
+      {
+        "title": "Consent to record vulnerability not reported",
+        "detail": "Agent asked to note depression and reduced pay and customer agreed; the rules require the consent statement.",
+        "rule": "Consent",
+        "severity": "critical",
+        "suggested_wording": "Consent gained to record vulnerability.",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "Yes, you can record that."
+          }
+        ]
+      }
+    ],
+    "ignored_turns": []
+  }
+}

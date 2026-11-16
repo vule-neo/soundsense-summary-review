@@ -1,0 +1,347 @@
+{
+  "call_id": "CALL-009",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:30+00:00",
+  "usage": {
+    "input_tokens": 1507,
+    "output_tokens": 2612,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary says the customer refused an I&E assessment, but the customer agreed to complete it on 21 October after 6 pm (T12-T14, T20).",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address were verified and the agent confirmed security was complete.",
+        "rule": "DPA",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "your name, date of birth and address match. Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The company called and reached the customer, and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent called and spoke to the customer, and arrears were raised.",
+        "rule": "Contact Outcome",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          },
+          {
+            "turn_id": "T07",
+            "quote": "Arrears are showing from the missed instalment."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Overtime was suspended until Christmas, reducing monthly income by £300.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer said overtime worth about £300 a month has stopped until Christmas.",
+        "rule": "Situational Costs",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "it's about three hundred pounds a month extra. They've stopped all of it till Christmas."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£300",
+            "kind": "amount",
+            "turn_ids": [
+              "T08"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The customer refused an I&E assessment scheduled for 21 October after 6 pm,",
+        "verdict": "contradicted",
+        "severity": "critical",
+        "explanation": "The customer only deferred the I&E to the next evening and agreed to complete it. This was not a refusal. The assessment call was scheduled for 21 October after six.",
+        "rule": "I&E Refusal",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "I can do it tomorrow evening when I've got my bank app"
+          },
+          {
+            "turn_id": "T15",
+            "quote": "I'll request a call on the twenty-first of October after six."
+          },
+          {
+            "turn_id": "T24",
+            "quote": "I'll be ready tomorrow."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "21 October",
+            "kind": "date",
+            "turn_ids": [
+              "T15"
+            ]
+          },
+          {
+            "text": "after 6 pm",
+            "kind": "time",
+            "turn_ids": [
+              "T14",
+              "T15"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "possible credit file impact was explained,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent said missed payments may affect the credit file and clarified that the appointment does not prevent reporting.",
+        "rule": "Consequences",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "missed payments may affect your credit file."
+          },
+          {
+            "turn_id": "T17",
+            "quote": "doesn't remove a missed payment"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the agent checked the customer’s understanding.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent checked the customer understood the next step.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Is that your understanding?"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The agent attempted to secure a payment, but the customer declined;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent asked whether the customer could pay anything today and the customer said no. This is a borderline attempt but acceptable.",
+        "rule": "Payment Attempts",
+        "evidence": [
+          {
+            "turn_id": "T09",
+            "quote": "Is there anything you could pay today towards the arrears?"
+          },
+          {
+            "turn_id": "T10",
+            "quote": "No."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "no payment amount was agreed;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer confirmed that no amount had been agreed.",
+        "rule": "Promises to Pay",
+        "evidence": [
+          {
+            "turn_id": "T20",
+            "quote": "I haven't agreed an amount yet."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "the next steps are for the customer to prepare income and expense figures for the company’s assessment call.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer is to prepare figures and bills for the assessment call the next day.",
+        "rule": "Next Steps",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "You'll need the income figures without overtime and your usual essential expenses."
+          }
+        ],
+        "key_terms": []
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Outbound",
+        "summary_value": "The company called the customer",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Arrears from a missed instalment",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "Arrears are showing from the missed instalment."
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Overtime cut, about £300 a month lost until Christmas",
+        "summary_value": "Overtime suspended until Christmas, £300 reduction",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "They've stopped all of it till Christmas."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "Customer agreed to do the I&E the next evening after six",
+        "summary_value": "Customer refused an I&E assessment",
+        "status": "mismatch",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "I can do it tomorrow evening"
+          },
+          {
+            "turn_id": "T20",
+            "quote": "Get the bills ready, speak after six tomorrow"
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "Customer declined to pay anything today",
+        "summary_value": "Agent attempted payment, customer declined",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "No."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "No amount agreed",
+        "summary_value": "No payment amount was agreed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T20",
+            "quote": "I haven't agreed an amount yet."
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "I&E assessment call 21 October after 6 pm; customer to prepare figures",
+        "summary_value": "Customer to prepare figures for the assessment call",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "You'll need the income figures without overtime"
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}

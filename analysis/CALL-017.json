@@ -1,0 +1,342 @@
+{
+  "call_id": "CALL-017",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:53+00:00",
+  "usage": {
+    "input_tokens": 1438,
+    "output_tokens": 2645,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary says a thirty-day hold was applied, but the agent applied a fourteen-day hold (T13, T19); it also omits the bereavement and frozen joint account.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode were verified.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The company called and reached the customer, and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent called and spoke to the customer, and arrears were mentioned without any amount.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          },
+          {
+            "turn_id": "T07",
+            "quote": "There's a missed instalment showing as arrears."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Consent gained to record vulnerability.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent asked to record the bereavement and frozen account, and the customer agreed.",
+        "rule": "Consent",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Yes, you can write that down."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer was referred to Citizens Advice,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent suggested Citizens Advice and the customer agreed.",
+        "rule": "External Advice",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "Citizens Advice can help you understand what support is available"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the agent checked understanding that a contact hold does not cancel the arrears.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent checked that the customer understood the difference between the hold and the money owed.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "Does the difference between the contact hold and the money still owed make sense?"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A thirty-day hold on collection contact was applied;",
+        "verdict": "contradicted",
+        "severity": "major",
+        "explanation": "The hold was fourteen days, not thirty.",
+        "rule": "Forbearance",
+        "evidence": [
+          {
+            "turn_id": "T13",
+            "quote": "We can put a fourteen-day hold on collection contact"
+          },
+          {
+            "turn_id": "T19",
+            "quote": "I've applied the fourteen-day contact hold."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "thirty-day",
+            "kind": "duration",
+            "turn_ids": [
+              "T13",
+              "T19"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "the next steps are to seek advice and update the company if bank access changes before the company’s review call on 3 November;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The review call on 3 November is confirmed, and the customer can contact the company sooner if the bank gives information.",
+        "rule": "Next steps",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "We'll call on the third of November"
+          },
+          {
+            "turn_id": "T21",
+            "quote": "If the bank gives you information sooner, you can contact us."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "3 November",
+            "kind": "date",
+            "turn_ids": [
+              "T19"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "no payment commitment was made.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent and customer confirmed that no payment amount or date was agreed.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "We haven't agreed an amount or date for a payment."
+          }
+        ],
+        "key_terms": []
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Outbound",
+        "summary_value": "The company called the customer",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Full DPA completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Missed instalment in arrears",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "There's a missed instalment showing as arrears."
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Joint account frozen by bank after mother's death",
+        "summary_value": "",
+        "status": "missing_in_summary",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "Bank's frozen it while they sort the paperwork after the bereavement."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "Bereavement and frozen account",
+        "summary_value": "Consent gained to record vulnerability (vulnerability not stated)",
+        "status": "missing_in_summary",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T06",
+            "quote": "My mam died last month"
+          }
+        ]
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "Consent given",
+        "summary_value": "Consent gained to record vulnerability.",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Yes, you can write that down."
+          }
+        ]
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "No I&E discussed",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "No warning given",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "Citizens Advice suggested; customer agreed",
+        "summary_value": "Referred to Citizens Advice",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "Citizens Advice can help you"
+          }
+        ]
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "Fourteen-day hold on collection contact",
+        "summary_value": "Thirty-day hold",
+        "status": "mismatch",
+        "severity": "major",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "I've applied the fourteen-day contact hold."
+          }
+        ]
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "None agreed",
+        "summary_value": "No payment commitment made",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "We haven't agreed an amount or date for a payment."
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Review call on 3 November; customer to seek advice and contact sooner if bank info",
+        "summary_value": "Seek advice, update if bank access changes, review call 3 November",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "We'll call on the third of November"
+          }
+        ]
+      }
+    ],
+    "omissions": [
+      {
+        "title": "Bereavement and frozen joint account not stated",
+        "detail": "The customer's mother died and the bank froze the joint account holding the car payment. This is the reason for non-payment and a severe hardship, and the summary only says consent was gained without stating what was recorded.",
+        "rule": "Severe Hardship Specifics",
+        "severity": "critical",
+        "suggested_wording": "Customer reported a bereavement, and the bank has frozen the joint account used for the car payment. Consent gained to record vulnerability.",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "Bank's frozen it while they sort the paperwork after the bereavement."
+          },
+          {
+            "turn_id": "T06",
+            "quote": "My mam died last month"
+          }
+        ]
+      }
+    ],
+    "ignored_turns": []
+  }
+}

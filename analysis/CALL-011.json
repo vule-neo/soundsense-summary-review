@@ -1,0 +1,368 @@
+{
+  "call_id": "CALL-011",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:41+00:00",
+  "usage": {
+    "input_tokens": 1481,
+    "output_tokens": 2867,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "minor_issues",
+    "headline": "Summary is largely accurate, but it omits the \"customer signposted\" phrase required for the website referral (T15).",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address were verified and security confirmed.",
+        "rule": "DPA",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The company called and reached the customer,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent opened the call asking for the customer, who confirmed it was them.",
+        "rule": "Call direction",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "could I speak to Robert Lane, please?"
+          },
+          {
+            "turn_id": "T02",
+            "quote": "That's me."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent mentioned a missed instalment and arrears with no amounts, which is compliant.",
+        "rule": "Arrears/Balances",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "There's one missed instalment and arrears on the account."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A broken wrist caused absence from work, with sick pay reducing monthly income by £400;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer reported a broken wrist, time off work and sick pay about £400 a month lower than usual wages.",
+        "rule": "Situational Costs",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "about four hundred pounds less a month than my usual wages"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£400",
+            "kind": "amount",
+            "turn_ids": [
+              "T08"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Consent gained to record vulnerability.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent asked permission to record the wrist and income reduction, and the customer agreed.",
+        "rule": "Consent",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Yes, that's okay. You can note the wrist and the sick pay."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer was referred to MoneyHelper,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent pointed the customer to MoneyHelper. The summary lacks the mandated \"customer signposted\" phrase, which is covered under omissions.",
+        "rule": "External Advice",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "MoneyHelper can provide free guidance on your money situation."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the agent checked understanding that a contact hold does not cancel payments or arrears.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent explained the hold does not cancel the instalment or arrears, and checked the customer understood.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "It doesn't cancel the instalment or the arrears."
+          },
+          {
+            "turn_id": "T21",
+            "quote": "Is that clear?"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A fourteen-day hold on collection contact was applied;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent applied a fourteen-day hold on collection contact.",
+        "rule": "Forbearance",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "I'll also apply a fourteen-day hold on collection contact"
+          },
+          {
+            "turn_id": "T21",
+            "quote": "I've applied the hold."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "fourteen-day",
+            "kind": "duration",
+            "turn_ids": [
+              "T17"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "the next steps are for the customer to seek advice and clarify their return to work before the company calls on 3 November to review income and discuss an affordable plan.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer will look at the advice and sort the sick note date, and the agent will call on 3 November to review.",
+        "rule": "Next steps",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "We'll call on the third of November to review your income and discuss an affordable plan."
+          },
+          {
+            "turn_id": "T20",
+            "quote": "I can look at the advice and get the latest sick note date sorted."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "3 November",
+            "kind": "date",
+            "turn_ids": [
+              "T21"
+            ]
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Outbound",
+        "summary_value": "Company called the customer",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Name, DOB and address verified",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "Customer spoke directly",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "One missed instalment and arrears",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "There's one missed instalment and arrears on the account."
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Broken wrist, off work on sick pay about £400 less a month",
+        "summary_value": "Broken wrist caused absence from work, sick pay reducing income by £400",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "Broke my wrist coming off my bike."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "Broken wrist and reduced income",
+        "summary_value": "Broken wrist and reduced income recorded",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "You can note the wrist and the sick pay."
+          }
+        ]
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "Customer consented",
+        "summary_value": "Consent gained to record vulnerability",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "Yes, that's okay."
+          }
+        ]
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "No formal I&E assessment completed",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "No warning given",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "MoneyHelper mentioned, and the website support page",
+        "summary_value": "Referred to MoneyHelper, without the phrase \"customer signposted\"",
+        "status": "mismatch",
+        "severity": "major",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "Our website has a support page with their contact details"
+          }
+        ]
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "Fourteen-day hold on collection contact",
+        "summary_value": "Fourteen-day hold applied",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "fourteen-day hold on collection contact"
+          }
+        ]
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment taken",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "rather than agreeing an amount today"
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "No promise to pay",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "rather than agreeing an amount today"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Customer to seek advice; agent to call 3 November to review",
+        "summary_value": "Customer seeks advice, company calls 3 November",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "We'll call on the third of November"
+          }
+        ]
+      }
+    ],
+    "omissions": [
+      {
+        "title": "Missing \"customer signposted\" phrase",
+        "detail": "The agent directed the customer to the website support page for help, so the rules require the phrase \"customer signposted\".",
+        "rule": "Signposting",
+        "severity": "major",
+        "suggested_wording": "The customer was signposted to MoneyHelper and the company website support page.",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "Our website has a support page with their contact details and information about getting help."
+          }
+        ]
+      }
+    ],
+    "ignored_turns": []
+  }
+}

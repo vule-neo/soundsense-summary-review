@@ -1,0 +1,362 @@
+{
+  "call_id": "CALL-002",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:17+00:00",
+  "usage": {
+    "input_tokens": 1469,
+    "output_tokens": 2666,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary records the Friday promise as £150, but the customer's final agreed amount was £100 (T14-T16, T22).",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode were verified and the agent confirmed security was complete.",
+        "rule": "DPA",
+        "evidence": [
+          {
+            "turn_id": "T06",
+            "quote": "Morgan Rhys Evans. Sixth of September nineteen ninety-one."
+          },
+          {
+            "turn_id": "T07",
+            "quote": "security is complete"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The company called and reached the customer, and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent opened the call and asked for the customer, who confirmed they were speaking. Arrears were discussed without stating the amount.",
+        "rule": "Arrears/Balances",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "could I speak to Morgan Evans, please?"
+          },
+          {
+            "turn_id": "T02",
+            "quote": "Speaking."
+          },
+          {
+            "turn_id": "T07",
+            "quote": "You're one instalment behind"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A clutch repair costing £780 prevented the customer from making the instalment despite unchanged working hours and wages,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The final repair cost was £780, and the customer said hours and wages are unchanged. The repair cost is correctly included as a situational cost.",
+        "rule": "Situational Costs",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "it ended up being seven hundred and eighty with the extra work"
+          },
+          {
+            "turn_id": "T10",
+            "quote": "I'm still doing the same hours, same wages."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£780",
+            "kind": "amount",
+            "turn_ids": [
+              "T08"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "the customer declined an I&E assessment,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer declined the I&E assessment and the agent acknowledged this.",
+        "rule": "I&E Refusal",
+        "evidence": [
+          {
+            "turn_id": "T18",
+            "quote": "I'd rather not, to be honest."
+          },
+          {
+            "turn_id": "T19",
+            "quote": "you've declined that today"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the agent checked the customer’s understanding.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The customer summarised the plan and the agent confirmed it.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "So a hundred Friday online, and you'll ring Monday about what's left?"
+          },
+          {
+            "turn_id": "T23",
+            "quote": "Exactly."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer agreed to pay £150 through the online portal on 23 October;",
+        "verdict": "contradicted",
+        "severity": "critical",
+        "explanation": "The customer withdrew £150 and agreed to £100 on 23 October. The date and method are correct, but the amount is wrong.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "It'll have to be a hundred."
+          },
+          {
+            "turn_id": "T16",
+            "quote": "Yes, a hundred on the twenty-third."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£150",
+            "kind": "amount",
+            "turn_ids": [
+              "T14",
+              "T16"
+            ]
+          },
+          {
+            "text": "23 October",
+            "kind": "date",
+            "turn_ids": [
+              "T15",
+              "T16"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "the agent attempted to secure a payment during the call, but the customer declined.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent asked for a card payment today and the customer said no. No amount is stated.",
+        "rule": "Payment Attempts",
+        "evidence": [
+          {
+            "turn_id": "T11",
+            "quote": "Would you be able to make a card payment towards the arrears today?"
+          },
+          {
+            "turn_id": "T12",
+            "quote": "No, not today."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The next steps are for the company to call on 26 October after 4 pm to review the remaining arrears.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent arranged a call for Monday 26 October after 4 pm, and the remaining arrears are to be reviewed.",
+        "rule": "Terminology",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "Monday the twenty-sixth of October, after four in the afternoon"
+          },
+          {
+            "turn_id": "T19",
+            "quote": "We can review the remaining arrears"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "26 October",
+            "kind": "date",
+            "turn_ids": [
+              "T21"
+            ]
+          },
+          {
+            "text": "after 4 pm",
+            "kind": "time",
+            "turn_ids": [
+              "T21",
+              "T22"
+            ]
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Outbound; the agent called and asked for the customer",
+        "summary_value": "The company called the customer",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "could I speak to Morgan Evans, please?"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Full DPA completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "security is complete"
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "One instalment behind",
+        "summary_value": "Arrears discussed, no amount",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "You're one instalment behind"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Clutch repair costing £780 used most of the funds",
+        "summary_value": "Clutch repair costing £780",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "seven hundred and eighty"
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "No vulnerability disclosed",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "Customer declined I&E",
+        "summary_value": "Customer declined I&E",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T18",
+            "quote": "I'd rather not, to be honest."
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "Agent asked for a card payment; the customer declined",
+        "summary_value": "Agent attempted; customer declined",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T12",
+            "quote": "No, not today."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "£100 on 23 October via the online portal",
+        "summary_value": "£150 on 23 October via the online portal",
+        "status": "mismatch",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "a hundred on the twenty-third"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Call on Monday 26 October after 4 pm to review the remaining arrears",
+        "summary_value": "Call on 26 October after 4 pm to review the remaining arrears",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "after four in the afternoon"
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}

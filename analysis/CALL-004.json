@@ -1,0 +1,313 @@
+{
+  "call_id": "CALL-004",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:15+00:00",
+  "usage": {
+    "input_tokens": 1437,
+    "output_tokens": 2252,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "accurate",
+    "headline": "Summary is accurate and rule-compliant; all facts, amounts and dates match the transcript.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address/postcode were verified.",
+        "rule": "DPA",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "your name, date of birth and address match. Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer called inbound and the missed instalment/arrears were discussed, with no amounts stated.",
+        "rule": "Arrears/Balances",
+        "evidence": [
+          {
+            "turn_id": "T02",
+            "quote": "it's about my car finance account"
+          },
+          {
+            "turn_id": "T07",
+            "quote": "arrears were showing when we tried you"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "A £180 monthly rent increase caused the missed instalment, and the customer had reduced other spending.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Rent rose by £180 a month, leaving too little for the car payment; customer cancelled subscriptions and parking.",
+        "rule": "Situational Costs",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "put the rent up by a hundred and eighty pounds a month"
+          },
+          {
+            "turn_id": "T10",
+            "quote": "I've cancelled a couple of subscriptions"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£180",
+            "kind": "amount",
+            "turn_ids": [
+              "T08"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "An I&E assessment was completed with an assessed monthly surplus of £60, the agent checked the customer’s understanding,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "I&E completed with about £60 left; agent asked if the plan made sense.",
+        "rule": "Affordability, Advice & Compliance",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "is about sixty pounds"
+          },
+          {
+            "turn_id": "T15",
+            "quote": "We've completed the assessment with those figures."
+          },
+          {
+            "turn_id": "T19",
+            "quote": "Does the plan make sense?"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£60",
+            "kind": "amount",
+            "turn_ids": [
+              "T14"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "and the customer agreed to pay £40 through the online portal on 28 October, with the normal Direct Debit unchanged.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agreed £40 on 28 October via portal; Direct Debit unchanged.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "forty pounds on the twenty-eighth of October through the portal"
+          },
+          {
+            "turn_id": "T20",
+            "quote": "normal Direct Debit stays the same"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£40",
+            "kind": "amount",
+            "turn_ids": [
+              "T16",
+              "T17"
+            ]
+          },
+          {
+            "text": "28 October",
+            "kind": "date",
+            "turn_ids": [
+              "T17"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The next steps are to check the emailed confirmation and contact the company before collection if the regular payment becomes difficult.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Email confirmation to be sent; agent advised contacting before collection date if difficulty.",
+        "rule": "Next steps",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "I'll send confirmation of the arrangement by email."
+          },
+          {
+            "turn_id": "T21",
+            "quote": "contact us before the collection date"
+          }
+        ],
+        "key_terms": []
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Inbound",
+        "summary_value": "Customer called the company",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T02",
+            "quote": "it's about my car finance account"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Full DPA completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "One missed instalment, arrears",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "There's one missed instalment"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Rent rise of £180 monthly",
+        "summary_value": "£180 monthly rent increase",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "put the rent up by a hundred and eighty pounds"
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "No vulnerability disclosed",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "I&E completed, about £60 surplus",
+        "summary_value": "I&E completed, £60 surplus",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "is about sixty pounds"
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "No warning",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment taken",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Nothing is being collected during this call."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "£40 on 28 October via portal",
+        "summary_value": "£40 through portal on 28 October",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "forty pounds on the twenty-eighth of October through the portal"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Check email; contact before collection if difficulty",
+        "summary_value": "Check emailed confirmation; contact before collection if difficulty",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T21",
+            "quote": "contact us before the collection date"
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}

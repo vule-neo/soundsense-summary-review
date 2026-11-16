@@ -1,0 +1,312 @@
+{
+  "call_id": "CALL-010",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:33+00:00",
+  "usage": {
+    "input_tokens": 1408,
+    "output_tokens": 2359,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary omits the specific cause of non-payment (husband cancelled the Direct Debit during divorce mix-up), though payment promise and DPA are accurate.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Pre-call security (name, DOB, address) was confirmed by the agent and customer.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "pre-call security is confirmed"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The customer called the company and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent opened with a general greeting and the customer explained the query; missed instalment discussed, no amount stated.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help?"
+          },
+          {
+            "turn_id": "T07",
+            "quote": "There is a missed instalment on the account."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The agent checked affordability and the customer’s understanding,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent asked about essential costs and asked the customer to check the confirmations; customer repeated back the plan.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T16",
+            "quote": "Will that leave enough for your essential costs?"
+          },
+          {
+            "turn_id": "T21",
+            "quote": "New instruction for future payments"
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the customer agreed to pay £205 through the online portal on 27 October.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer agreed £205 via portal on 27 October, which is within the month of the call.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "two hundred and five pounds, on the twenty-seventh of October"
+          },
+          {
+            "turn_id": "T16",
+            "quote": "through the portal on the twenty-seventh"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£205",
+            "kind": "amount",
+            "turn_ids": [
+              "T15",
+              "T16"
+            ]
+          },
+          {
+            "text": "27 October",
+            "kind": "date",
+            "turn_ids": [
+              "T15"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "A new Direct Debit instruction was set up for future collections;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent confirmed the new DD was set up for future collections.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "The new Direct Debit instruction is set up for future collections."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "the next steps are to check the confirmations and contact the company before the payment date if any details differ.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent asked the customer to check the emails and call if anything differs before the payment date.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "call us so we can check it before the payment date"
+          }
+        ],
+        "key_terms": []
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Inbound",
+        "summary_value": "Customer called the company",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "How can I help?"
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Pre-call security confirmed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "pre-call security is confirmed"
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "Customer is the account holder",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Missed instalment discussed",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "There is a missed instalment on the account."
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Husband cancelled the Direct Debit by mistake during divorce when moving bills from the joint account",
+        "summary_value": "",
+        "status": "missing_in_summary",
+        "severity": "major",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "He cancelled this one too, by mistake."
+          },
+          {
+            "turn_id": "T10",
+            "quote": "Divorce mix-up, really."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "No vulnerability disclosed; not a drop in money",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "not a drop in money"
+          }
+        ]
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "Not discussed",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "Affordability checked verbally; wages and rent covered",
+        "summary_value": "Agent checked affordability",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "I've got my wages then, and the rent's already covered."
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "Not warned",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment taken; DD set up only",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T14",
+            "quote": "It won't automatically collect the existing arrears."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "£205 via portal on 27 October",
+        "summary_value": "£205 via online portal on 27 October",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "two hundred and five pounds, on the twenty-seventh of October"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Check confirmation emails; call if details differ before payment date",
+        "summary_value": "Check confirmations and contact company before payment date if details differ",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "If either confirmation shows something different, call us"
+          }
+        ]
+      }
+    ],
+    "omissions": [
+      {
+        "title": "Specific cause of non-payment omitted",
+        "detail": "Customer explained the Direct Debit was cancelled by mistake by her husband during divorce when moving bills from the joint account. The rules require specific causes to be reported.",
+        "rule": "Specificity (No Generalization)",
+        "severity": "major",
+        "suggested_wording": "Husband cancelled the Direct Debit by mistake from the joint account due to a divorce mix-up.",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "He cancelled this one too, by mistake."
+          },
+          {
+            "turn_id": "T10",
+            "quote": "Divorce mix-up, really."
+          }
+        ]
+      }
+    ],
+    "ignored_turns": []
+  }
+}

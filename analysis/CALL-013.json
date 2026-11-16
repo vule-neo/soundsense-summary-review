@@ -1,0 +1,335 @@
+{
+  "call_id": "CALL-013",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "generated_at": "2026-11-16T15:26:39+00:00",
+  "usage": {
+    "input_tokens": 1505,
+    "output_tokens": 2347,
+    "cache_read_input_tokens": 7727
+  },
+  "analysis": {
+    "overall_verdict": "needs_correction",
+    "headline": "Summary states 'Payment made' although the customer explicitly paid nothing on the call (T22-T23); the £60 is a future promise.",
+    "claims": [
+      {
+        "text": "DPA completed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Name, DOB and address verified.",
+        "rule": "DPA",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "your name, date of birth and address match. Security is complete."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The company called and reached the customer, and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent opened the call and spoke to the customer; missed instalment/arrears discussed.",
+        "rule": "Contact Outcome",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "could I speak to Ashley Cole, please?"
+          },
+          {
+            "turn_id": "T07",
+            "quote": "There's a missed instalment showing as arrears."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "Replacing a failed washing machine for £340 used the funds reserved for the instalment.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Customer said the machine cost £340 and used money kept for the car payment.",
+        "rule": "Situational Costs",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "New one's three hundred and forty pounds, and I used money I'd kept for the car payment."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£340",
+            "kind": "amount",
+            "turn_ids": [
+              "T08"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "The agent checked affordability and the customer’s understanding,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent asked what was manageable and confirmed the arrangement was clear; the customer said they understood.",
+        "rule": "Affordability/Understanding",
+        "evidence": [
+          {
+            "turn_id": "T13",
+            "quote": "What would be manageable on Friday after your essential expenses?"
+          },
+          {
+            "turn_id": "T18",
+            "quote": "Yeah, I understand."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the customer agreed to pay £60 by bank transfer on 23 October using their account reference.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Friday 23 October, £60 by bank transfer, with account reference.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T15",
+            "quote": "sixty pounds on the twenty-third of October"
+          },
+          {
+            "turn_id": "T16",
+            "quote": "Bank transfer."
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "£60",
+            "kind": "amount",
+            "turn_ids": [
+              "T14",
+              "T17"
+            ]
+          },
+          {
+            "text": "23 October",
+            "kind": "date",
+            "turn_ids": [
+              "T15",
+              "T17"
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Payment made;",
+        "verdict": "contradicted",
+        "severity": "critical",
+        "explanation": "No payment was taken on the call; customer and agent confirmed this.",
+        "rule": "Immediate Payments",
+        "evidence": [
+          {
+            "turn_id": "T22",
+            "quote": "I haven't paid anything today."
+          },
+          {
+            "turn_id": "T23",
+            "quote": "no payment has been taken today."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "the next steps are to retain the transfer confirmation and for the company to call on 27 October, preferably after 10 am, to review receipt and the remaining arrears.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Call on Tuesday 27 October after ten to review receipt and remainder; keep confirmation.",
+        "rule": "Next Steps",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Tuesday the twenty-seventh of October"
+          },
+          {
+            "turn_id": "T20",
+            "quote": "After ten, yes."
+          },
+          {
+            "turn_id": "T21",
+            "quote": "Please keep the confirmation"
+          }
+        ],
+        "key_terms": [
+          {
+            "text": "27 October",
+            "kind": "date",
+            "turn_ids": [
+              "T19"
+            ]
+          },
+          {
+            "text": "after 10 am",
+            "kind": "time",
+            "turn_ids": [
+              "T20"
+            ]
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "field": "call_direction",
+        "transcript_value": "Outbound",
+        "summary_value": "Company called customer",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T01",
+            "quote": "I'm calling from vehicle finance collections."
+          }
+        ]
+      },
+      {
+        "field": "dpa",
+        "transcript_value": "Completed",
+        "summary_value": "DPA completed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T05",
+            "quote": "Security is complete."
+          }
+        ]
+      },
+      {
+        "field": "third_party_authority",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "account_status",
+        "transcript_value": "Missed instalment/arrears",
+        "summary_value": "Arrears discussed",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "missed instalment showing as arrears"
+          }
+        ]
+      },
+      {
+        "field": "reason_for_non_payment",
+        "transcript_value": "Washing machine replacement £340 used car payment money",
+        "summary_value": "Same",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T08",
+            "quote": "I used money I'd kept for the car payment."
+          }
+        ]
+      },
+      {
+        "field": "hardship_and_vulnerability",
+        "transcript_value": "None",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "consent_to_record_vulnerability",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "income_and_expenditure",
+        "transcript_value": "Affordability discussed informally",
+        "summary_value": "Agent checked affordability",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T13",
+            "quote": "What would be manageable on Friday"
+          }
+        ]
+      },
+      {
+        "field": "risk_of_further_action",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "signposting_and_referrals",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "forbearance_or_hold",
+        "transcript_value": "",
+        "summary_value": "",
+        "status": "not_applicable",
+        "severity": "none",
+        "evidence": []
+      },
+      {
+        "field": "payment_during_call",
+        "transcript_value": "No payment taken",
+        "summary_value": "Payment made",
+        "status": "mismatch",
+        "severity": "critical",
+        "evidence": [
+          {
+            "turn_id": "T23",
+            "quote": "no payment has been taken today."
+          }
+        ]
+      },
+      {
+        "field": "promise_to_pay",
+        "transcript_value": "£60 by bank transfer on 23 October",
+        "summary_value": "£60 by bank transfer on 23 October",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "sixty pounds by bank transfer on the twenty-third"
+          }
+        ]
+      },
+      {
+        "field": "next_steps",
+        "transcript_value": "Call 27 October after 10 to review",
+        "summary_value": "Same",
+        "status": "match",
+        "severity": "none",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Tuesday the twenty-seventh of October"
+          }
+        ]
+      }
+    ],
+    "omissions": [],
+    "ignored_turns": []
+  }
+}
