@@ -2,21 +2,21 @@
   "call_id": "CALL-008",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:27+00:00",
+  "generated_at": "2026-11-16T15:47:37+00:00",
   "usage": {
     "input_tokens": 1469,
-    "output_tokens": 2310,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2543,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
     "overall_verdict": "needs_correction",
-    "headline": "Summary claims the agent confirmed a default notice had been issued, but the call only mentions an arrears letter and a missed payment (T06, T07).",
+    "headline": "Summary invents a default notice confirmation that was never mentioned (customer only referred to an arrears letter, T06-T07).",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode were verified.",
+        "explanation": "Name, DOB and address/postcode were given and matched.",
         "rule": "DPA",
         "evidence": [
           {
@@ -30,16 +30,16 @@
         "text": "The customer called the company and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer asked if they had reached the right team about the arrears letter; arrears discussed without amounts.",
-        "rule": "Call direction",
+        "explanation": "Agent opened with a general greeting and the customer explained their query; arrears and a missed payment were discussed.",
+        "rule": "Direction",
         "evidence": [
           {
-            "turn_id": "T02",
-            "quote": "Have I come through to the right team?"
+            "turn_id": "T01",
+            "quote": "Good morning, vehicle finance collections. How can I help?"
           },
           {
-            "turn_id": "T07",
-            "quote": "there's a missed payment showing"
+            "turn_id": "T06",
+            "quote": "I'm phoning about the arrears letter"
           }
         ],
         "key_terms": []
@@ -48,12 +48,16 @@
         "text": "A job change moved payday from the twenty-fifth to the last Friday of the month, causing the missed payment.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer explained the new pay date falls after the due date.",
+        "explanation": "Customer explained the new job pays on the last Friday of the month rather than the 25th, and the instalment fell before wages arrived.",
         "rule": "Specificity",
         "evidence": [
           {
             "turn_id": "T08",
             "quote": "New place does the last Friday of the month, which is the thirtieth this time."
+          },
+          {
+            "turn_id": "T07",
+            "quote": "The instalment was due before your wages arrived"
           }
         ],
         "key_terms": [
@@ -67,10 +71,10 @@
         ]
       },
       {
-        "text": "The agent confirmed a default notice had been issued and checked the customer’s understanding,",
+        "text": "The agent confirmed a default notice had been issued",
         "verdict": "contradicted",
         "severity": "major",
-        "explanation": "No default notice was mentioned; only an arrears letter and a missed payment. The understanding check did occur (T21).",
+        "explanation": "No default notice was mentioned; the customer referred to an arrears letter and the agent only mentioned a missed payment.",
         "rule": "Consequences",
         "evidence": [
           {
@@ -78,26 +82,35 @@
             "quote": "I'm phoning about the arrears letter"
           },
           {
-            "turn_id": "T21",
-            "quote": "Can you confirm the payment date and what happens afterwards"
+            "turn_id": "T07",
+            "quote": "there's a missed payment showing"
           }
         ],
-        "key_terms": [
+        "key_terms": []
+      },
+      {
+        "text": "and checked the customer’s understanding,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent asked the customer to confirm the plan and the customer did so, and the agent confirmed.",
+        "rule": "Understanding",
+        "evidence": [
           {
-            "text": "default notice",
-            "kind": "other",
-            "turn_ids": [
-              "T06",
-              "T07"
-            ]
+            "turn_id": "T21",
+            "quote": "so I know I've explained it clearly?"
+          },
+          {
+            "turn_id": "T22",
+            "quote": "Hundred and twenty online on the thirtieth"
           }
-        ]
+        ],
+        "key_terms": []
       },
       {
         "text": "and the customer agreed to pay £120 through the online portal on 30 October.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Final agreed promise is £120 via portal on Friday 30 October.",
+        "explanation": "Final agreed position is £120 via portal on Friday 30 October.",
         "rule": "Future Promises",
         "evidence": [
           {
@@ -132,7 +145,7 @@
         "text": "The next steps are for the customer to reset their portal password and contact the company if wages are delayed,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer will reset password; agent asked them to make contact if wages don't arrive.",
+        "explanation": "Customer said they would reset the password tonight; agent asked them to make contact if wages don't arrive.",
         "rule": "Next steps",
         "evidence": [
           {
@@ -150,7 +163,7 @@
         "text": "and for the company to call on 2 November, preferably after 5.30 pm, about the remaining arrears.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Callback on Monday 2 November, preference after half five.",
+        "explanation": "Agent proposed a call on Monday 2 November; customer preference after half five was recorded, with no guarantee.",
         "rule": "Next steps",
         "evidence": [
           {
@@ -159,7 +172,7 @@
           },
           {
             "turn_id": "T19",
-            "quote": "a preference for after half past five"
+            "quote": "preference for after half past five"
           }
         ],
         "key_terms": [
@@ -167,8 +180,7 @@
             "text": "2 November",
             "kind": "date",
             "turn_ids": [
-              "T17",
-              "T22"
+              "T17"
             ]
           },
           {
@@ -185,20 +197,20 @@
     "facts": [
       {
         "field": "call_direction",
-        "transcript_value": "Inbound",
-        "summary_value": "Customer called the company",
+        "transcript_value": "Inbound; customer called",
+        "summary_value": "The customer called the company",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
-            "turn_id": "T02",
-            "quote": "Have I come through to the right team?"
+            "turn_id": "T01",
+            "quote": "How can I help?"
           }
         ]
       },
       {
         "field": "dpa",
-        "transcript_value": "Full verification completed",
+        "transcript_value": "Full DPA completed",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
@@ -211,7 +223,7 @@
       },
       {
         "field": "third_party_authority",
-        "transcript_value": "",
+        "transcript_value": "Customer spoke",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -219,10 +231,10 @@
       },
       {
         "field": "account_status",
-        "transcript_value": "Missed payment/arrears discussed",
-        "summary_value": "Arrears discussed; default notice issued",
-        "status": "mismatch",
-        "severity": "major",
+        "transcript_value": "Missed payment and arrears discussed",
+        "summary_value": "arrears were discussed",
+        "status": "match",
+        "severity": "none",
         "evidence": [
           {
             "turn_id": "T07",
@@ -232,8 +244,8 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Job change moved payday after due date",
-        "summary_value": "Job change moved payday",
+        "transcript_value": "Job change moved payday after the due date",
+        "summary_value": "Job change moved payday to last Friday of month",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -253,7 +265,7 @@
       },
       {
         "field": "consent_to_record_vulnerability",
-        "transcript_value": "",
+        "transcript_value": "None",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -269,7 +281,7 @@
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "No explicit warning",
+        "transcript_value": "No warning",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -286,14 +298,19 @@
       {
         "field": "forbearance_or_hold",
         "transcript_value": "None",
-        "summary_value": "",
-        "status": "not_applicable",
-        "severity": "none",
-        "evidence": []
+        "summary_value": "Summary claims default notice confirmed",
+        "status": "mismatch",
+        "severity": "major",
+        "evidence": [
+          {
+            "turn_id": "T07",
+            "quote": "there's a missed payment showing"
+          }
+        ]
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "None",
+        "transcript_value": "No payment taken",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -302,7 +319,7 @@
       {
         "field": "promise_to_pay",
         "transcript_value": "£120 via portal on 30 October",
-        "summary_value": "£120 via portal on 30 October",
+        "summary_value": "£120 through portal on 30 October",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -314,14 +331,14 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Reset password, contact if wages late; call 2 November after 5.30 pm",
+        "transcript_value": "Reset password, contact if wages delayed, company call 2 November after 5.30 pm",
         "summary_value": "Same",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T22",
-            "quote": "then you'll call on the second after half five if you can"
+            "quote": "you'll call on the second after half five if you can"
           }
         ]
       }

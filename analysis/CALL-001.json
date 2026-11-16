@@ -2,22 +2,22 @@
   "call_id": "CALL-001",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:15+00:00",
+  "generated_at": "2026-11-16T15:47:24+00:00",
   "usage": {
     "input_tokens": 1462,
-    "output_tokens": 2373,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2346,
+    "cache_read_input_tokens": 0
   },
   "analysis": {
-    "overall_verdict": "minor_issues",
-    "headline": "Summary is factually accurate with no breaches; only a minor point that the Direct Debit date change is described slightly loosely.",
+    "overall_verdict": "needs_correction",
+    "headline": "Summary is largely accurate but wrongly implies the agent checked understanding (the customer asked for confirmation at T20); otherwise only minor wording issues.",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode were given and confirmed by the agent.",
-        "rule": "",
+        "explanation": "Name, DOB and address/postcode were given and confirmed as matching.",
+        "rule": "DPA",
         "evidence": [
           {
             "turn_id": "T04",
@@ -34,7 +34,7 @@
         "text": "The customer called the company and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The customer rang in and arrears were discussed without stating the amount, in line with the rules.",
+        "explanation": "Customer rang in about a missed payment; arrears discussed without stating the amount.",
         "rule": "Arrears/Balances",
         "evidence": [
           {
@@ -52,12 +52,12 @@
         "text": "The missed payment arose because their employer moved payday from the last working day of the month to the fifth, causing the Direct Debit to be returned,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Cause is stated specifically, with no entity name.",
-        "rule": "Specificity (No Generalization)",
+        "explanation": "Specific cause is given with the employer unnamed; matches the customer's account.",
+        "rule": "Specificity",
         "evidence": [
           {
             "turn_id": "T06",
-            "quote": "My employer changed the payroll date."
+            "quote": "We used to get paid on the last working day, now it's the fifth."
           },
           {
             "turn_id": "T08",
@@ -66,7 +66,7 @@
         ],
         "key_terms": [
           {
-            "text": "the fifth",
+            "text": "fifth",
             "kind": "date",
             "turn_ids": [
               "T06"
@@ -76,14 +76,14 @@
       },
       {
         "text": "and the agent confirmed the customer’s understanding of the plan.",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "The customer checked the plan back and the agent confirmed it.",
+        "verdict": "contradicted",
+        "severity": "minor",
+        "explanation": "The agent did not check understanding. The customer asked for confirmation of the plan (T20), and the agent only confirmed it was correct.",
         "rule": "Understanding",
         "evidence": [
           {
             "turn_id": "T20",
-            "quote": "So nothing else this month, and then the ninth of November?"
+            "quote": "Sorry, just checking I've got that right."
           },
           {
             "turn_id": "T21",
@@ -96,7 +96,7 @@
         "text": "The next payment of £240 is due by Direct Debit on 9 November, as the eighth falls on a Sunday;",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The next collection is £240 on 9 November because 8 November is a Sunday.",
+        "explanation": "Amount, date and reason match what the agent stated. The £240 is the next collection, not an arrears figure.",
         "rule": "Future Promises",
         "evidence": [
           {
@@ -116,15 +116,8 @@
             "text": "9 November",
             "kind": "date",
             "turn_ids": [
-              "T19"
-            ]
-          },
-          {
-            "text": "the eighth",
-            "kind": "date",
-            "turn_ids": [
-              "T18",
-              "T19"
+              "T19",
+              "T20"
             ]
           }
         ]
@@ -133,7 +126,7 @@
         "text": "Payment made,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The payment succeeded and no amount is stated, as required.",
+        "explanation": "The card payment succeeded and no amount is stated, as required.",
         "rule": "Immediate Payments",
         "evidence": [
           {
@@ -148,7 +141,7 @@
         "verdict": "supported",
         "severity": "none",
         "explanation": "The agent changed the DD date to the eighth.",
-        "rule": "",
+        "rule": "Actions Taken",
         "evidence": [
           {
             "turn_id": "T19",
@@ -157,9 +150,10 @@
         ],
         "key_terms": [
           {
-            "text": "the eighth",
+            "text": "eighth",
             "kind": "date",
             "turn_ids": [
+              "T18",
               "T19"
             ]
           }
@@ -170,7 +164,7 @@
         "verdict": "supported",
         "severity": "none",
         "explanation": "Matches the agent's stated next steps.",
-        "rule": "Terminology",
+        "rule": "Next steps",
         "evidence": [
           {
             "turn_id": "T21",
@@ -184,26 +178,26 @@
       {
         "field": "call_direction",
         "transcript_value": "Inbound",
-        "summary_value": "The customer called the company",
+        "summary_value": "Customer called the company",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
-            "turn_id": "T02",
-            "quote": "I just wanted to ring before you tried me again."
+            "turn_id": "T01",
+            "quote": "How can I help?"
           }
         ]
       },
       {
         "field": "dpa",
-        "transcript_value": "Full DPA completed",
+        "transcript_value": "Full DPA verified",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T05",
-            "quote": "Thank you, those match."
+            "quote": "those match"
           }
         ]
       },
@@ -224,14 +218,14 @@
         "evidence": [
           {
             "turn_id": "T05",
-            "quote": "there are arrears of two hundred and forty pounds"
+            "quote": "there are arrears"
           }
         ]
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Payday moved to the fifth so the DD was returned",
-        "summary_value": "employer moved payday to the fifth, DD returned",
+        "transcript_value": "Employer moved payday to the fifth; DD returned",
+        "summary_value": "Employer moved payday to the fifth, DD returned",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -243,7 +237,7 @@
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "None",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -291,21 +285,21 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "Card payment taken successfully",
+        "transcript_value": "Card payment successful",
         "summary_value": "Payment made",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T15",
-            "quote": "the two hundred and forty pound payment has gone through"
+            "quote": "That's been successful"
           }
         ]
       },
       {
         "field": "promise_to_pay",
         "transcript_value": "£240 on 9 November via DD",
-        "summary_value": "£240 by Direct Debit on 9 November",
+        "summary_value": "£240 due 9 November by DD",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -317,8 +311,8 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Check confirmation email, have funds ready for November collection",
-        "summary_value": "check the confirmation email and ensure funds are available",
+        "transcript_value": "Check confirmation email; have funds ready",
+        "summary_value": "Same",
         "status": "match",
         "severity": "none",
         "evidence": [

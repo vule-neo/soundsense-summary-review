@@ -2,26 +2,26 @@
   "call_id": "CALL-018",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:23:51+00:00",
+  "generated_at": "2026-11-16T15:48:05+00:00",
   "usage": {
     "input_tokens": 1467,
-    "output_tokens": 2412,
-    "cache_read_input_tokens": 0
+    "output_tokens": 2473,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
     "overall_verdict": "needs_correction",
-    "headline": "Summary says Authority to Act was verified for the partner, but the customer explicitly refused it (T08, T10, T22); the I&E refusal is also omitted.",
+    "headline": "Summary says Authority to Act was verified for the partner, but the customer refused it (T08, T22); I&E refusal also omitted.",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode were verified.",
+        "explanation": "Name, DOB and address verified and agent confirmed security complete.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T05",
-            "quote": "your name, date of birth and address match"
+            "quote": "Security is complete."
           }
         ],
         "key_terms": []
@@ -30,16 +30,12 @@
         "text": "The customer called the company with their partner, and Authority to Act was verified for the partner;",
         "verdict": "contradicted",
         "severity": "critical",
-        "explanation": "The customer refused to authorise the partner and the agent confirmed no Authority to Act was granted; the agent refused to discuss details with the partner.",
+        "explanation": "Customer called; partner joined. But the customer explicitly refused authority and the agent confirmed none was granted. Summary states the opposite.",
         "rule": "Authority to Act",
         "evidence": [
           {
             "turn_id": "T08",
             "quote": "No, not the details."
-          },
-          {
-            "turn_id": "T10",
-            "quote": "I can't discuss the balance with you without her authority."
           },
           {
             "turn_id": "T22",
@@ -52,8 +48,8 @@
         "text": "arrears were discussed with the customer.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Arrears were discussed with the account holder only, without amounts stated.",
-        "rule": "Arrears/Balances",
+        "explanation": "Arrears discussed with the account holder only.",
+        "rule": "",
         "evidence": [
           {
             "turn_id": "T12",
@@ -66,7 +62,7 @@
         "text": "Reduced working hours lowered monthly income by £220.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Hours were cut from five to four days, about £220 less per month.",
+        "explanation": "Hours cut from five days to four, about £220 less a month; a situational cost to be included.",
         "rule": "Situational Costs",
         "evidence": [
           {
@@ -85,19 +81,33 @@
         ]
       },
       {
-        "text": "The agent checked understanding, and the customer agreed to pay £75 through the online portal on 26 October.",
+        "text": "The agent checked understanding,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent checked understanding and the customer agreed to £75 via the portal on 26 October.",
+        "explanation": "Agent asked and customer repeated back the plan.",
+        "rule": "Understanding",
+        "evidence": [
+          {
+            "turn_id": "T20",
+            "quote": "Have you understood the amount and dates?"
+          },
+          {
+            "turn_id": "T21",
+            "quote": "Seventy-five online on the twenty-sixth, then I ring on the twenty-seventh."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and the customer agreed to pay £75 through the online portal on 26 October.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Amount, method and date match the final agreement.",
         "rule": "Future Promises",
         "evidence": [
           {
             "turn_id": "T18",
             "quote": "seventy-five pounds on the twenty-sixth of October through the portal"
-          },
-          {
-            "turn_id": "T20",
-            "quote": "Have you understood the amount and dates?"
           }
         ],
         "key_terms": [
@@ -122,12 +132,12 @@
         "text": "The next steps are for the customer to call on 27 October to review the payment and remaining arrears.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent asked the customer to call on the 27th to review.",
+        "explanation": "Agent asked customer to call on the 27th (October) to review.",
         "rule": "Next Steps",
         "evidence": [
           {
             "turn_id": "T20",
-            "quote": "please call on the twenty-seventh to review the payment"
+            "quote": "please call on the twenty-seventh to review the payment and discuss the remainder"
           }
         ],
         "key_terms": [
@@ -135,7 +145,8 @@
             "text": "27 October",
             "kind": "date",
             "turn_ids": [
-              "T20"
+              "T20",
+              "T21"
             ]
           }
         ]
@@ -151,13 +162,13 @@
         "evidence": [
           {
             "turn_id": "T02",
-            "quote": "it's about my car finance account"
+            "quote": "Have I come through to the right team?"
           }
         ]
       },
       {
         "field": "dpa",
-        "transcript_value": "DPA completed",
+        "transcript_value": "Completed",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
@@ -184,7 +195,7 @@
       {
         "field": "account_status",
         "transcript_value": "Arrears discussed",
-        "summary_value": "Arrears discussed",
+        "summary_value": "Arrears discussed with customer",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -196,8 +207,8 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Hours reduced from five to four days, about £220 less monthly",
-        "summary_value": "Reduced hours lowered income by £220",
+        "transcript_value": "Hours reduced five to four days, about £220 less monthly",
+        "summary_value": "Reduced working hours lowered income by £220",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -217,7 +228,7 @@
       },
       {
         "field": "consent_to_record_vulnerability",
-        "transcript_value": "",
+        "transcript_value": "Not discussed",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -233,12 +244,16 @@
           {
             "turn_id": "T15",
             "quote": "No, I don't want to do that."
+          },
+          {
+            "turn_id": "T16",
+            "quote": "you've declined the assessment"
           }
         ]
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "",
+        "transcript_value": "Not warned",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -246,7 +261,7 @@
       },
       {
         "field": "signposting_and_referrals",
-        "transcript_value": "",
+        "transcript_value": "None",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -254,7 +269,7 @@
       },
       {
         "field": "forbearance_or_hold",
-        "transcript_value": "",
+        "transcript_value": "None",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -298,7 +313,7 @@
     "omissions": [
       {
         "title": "I&E refusal not reported",
-        "detail": "The agent offered an I&E assessment and the customer declined it; the rules require this to be stated.",
+        "detail": "Customer declined an income and expenditure assessment when offered.",
         "rule": "I&E Refusal",
         "severity": "critical",
         "suggested_wording": "Customer declined an income and expenditure assessment.",
@@ -306,23 +321,19 @@
           {
             "turn_id": "T15",
             "quote": "No, I don't want to do that."
-          },
-          {
-            "turn_id": "T16",
-            "quote": "you've declined the assessment"
           }
         ]
       },
       {
-        "title": "Partner refused authority not reported",
-        "detail": "The partner was refused details because the customer did not authorise him; the summary should state this.",
+        "title": "Authority refusal not reported",
+        "detail": "Partner was refused discussion of account details because the customer did not authorise it.",
         "rule": "Authority to Act",
         "severity": "critical",
-        "suggested_wording": "Customer's partner was present but Authority to Act was not granted, so account details were not discussed with him.",
+        "suggested_wording": "The partner was present but Authority to Act was not given, so no account details were discussed with them.",
         "evidence": [
           {
             "turn_id": "T10",
-            "quote": "I'll continue with the account holder."
+            "quote": "I can't discuss the balance with you without her authority."
           }
         ]
       }

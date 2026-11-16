@@ -2,22 +2,22 @@
   "call_id": "CALL-004",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:15+00:00",
+  "generated_at": "2026-11-16T15:47:25+00:00",
   "usage": {
     "input_tokens": 1437,
-    "output_tokens": 2252,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2663,
+    "cache_read_input_tokens": 0
   },
   "analysis": {
-    "overall_verdict": "accurate",
-    "headline": "Summary is accurate and rule-compliant; all facts, amounts and dates match the transcript.",
+    "overall_verdict": "minor_issues",
+    "headline": "Summary is largely accurate; the only point to check is the I&E surplus of £60, which was the customer's own 'about sixty pounds' estimate rather than an assessed figure (T14).",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode were verified.",
-        "rule": "DPA",
+        "explanation": "Name, DOB and address/postcode were verified and the agent confirmed security was complete.",
+        "rule": "",
         "evidence": [
           {
             "turn_id": "T05",
@@ -30,8 +30,8 @@
         "text": "The customer called the company and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer called inbound and the missed instalment/arrears were discussed, with no amounts stated.",
-        "rule": "Arrears/Balances",
+        "explanation": "Customer spoke first about the account, and the agent said 'Thanks for calling back'. The agent mentioned one missed instalment and arrears, with no amounts stated.",
+        "rule": "",
         "evidence": [
           {
             "turn_id": "T02",
@@ -39,25 +39,21 @@
           },
           {
             "turn_id": "T07",
-            "quote": "arrears were showing when we tried you"
+            "quote": "There's one missed instalment, so arrears were showing"
           }
         ],
         "key_terms": []
       },
       {
-        "text": "A £180 monthly rent increase caused the missed instalment, and the customer had reduced other spending.",
+        "text": "A £180 monthly rent increase caused the missed instalment,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Rent rose by £180 a month, leaving too little for the car payment; customer cancelled subscriptions and parking.",
-        "rule": "Situational Costs",
+        "explanation": "The customer attributed the shortfall to the rent rise of £180 a month, which left too little for the car payment.",
+        "rule": "",
         "evidence": [
           {
             "turn_id": "T08",
-            "quote": "put the rent up by a hundred and eighty pounds a month"
-          },
-          {
-            "turn_id": "T10",
-            "quote": "I've cancelled a couple of subscriptions"
+            "quote": "The landlord put the rent up by a hundred and eighty pounds a month."
           }
         ],
         "key_terms": [
@@ -71,11 +67,25 @@
         ]
       },
       {
-        "text": "An I&E assessment was completed with an assessed monthly surplus of £60, the agent checked the customer’s understanding,",
+        "text": "and the customer had reduced other spending.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "I&E completed with about £60 left; agent asked if the plan made sense.",
-        "rule": "Affordability, Advice & Compliance",
+        "explanation": "The customer cancelled subscriptions and stopped paying for parking.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T10",
+            "quote": "I've cancelled a couple of subscriptions and stopped paying for parking at work."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "An I&E assessment was completed with an assessed monthly surplus of £60,",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The assessment was completed (T15), but the £60 was the customer's own estimate ('about sixty pounds'), not a figure the agent confirmed. This is a Situational Cost-type figure, so including it is arguably allowed, but the reviewer should check the 'assessed' wording.",
+        "rule": "Situational Costs",
         "evidence": [
           {
             "turn_id": "T14",
@@ -84,10 +94,6 @@
           {
             "turn_id": "T15",
             "quote": "We've completed the assessment with those figures."
-          },
-          {
-            "turn_id": "T19",
-            "quote": "Does the plan make sense?"
           }
         ],
         "key_terms": [
@@ -101,11 +107,29 @@
         ]
       },
       {
+        "text": "the agent checked the customer’s understanding,",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "The agent asked whether the plan made sense and the customer confirmed.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "Does the plan make sense?"
+          },
+          {
+            "turn_id": "T20",
+            "quote": "Yes. Forty on the twenty-eighth"
+          }
+        ],
+        "key_terms": []
+      },
+      {
         "text": "and the customer agreed to pay £40 through the online portal on 28 October, with the normal Direct Debit unchanged.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Agreed £40 on 28 October via portal; Direct Debit unchanged.",
-        "rule": "Future Promises",
+        "explanation": "The final agreement was £40 on 28 October through the portal, with the Direct Debit unchanged. The portal is described as 'the portal', and 'online' is a reasonable but minor addition.",
+        "rule": "",
         "evidence": [
           {
             "turn_id": "T17",
@@ -122,7 +146,8 @@
             "kind": "amount",
             "turn_ids": [
               "T16",
-              "T17"
+              "T17",
+              "T20"
             ]
           },
           {
@@ -138,8 +163,8 @@
         "text": "The next steps are to check the emailed confirmation and contact the company before collection if the regular payment becomes difficult.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Email confirmation to be sent; agent advised contacting before collection date if difficulty.",
-        "rule": "Next steps",
+        "explanation": "The agent will email confirmation and the customer will check it. The agent said to contact them before the collection date if the payment becomes difficult.",
+        "rule": "",
         "evidence": [
           {
             "turn_id": "T19",
@@ -156,8 +181,8 @@
     "facts": [
       {
         "field": "call_direction",
-        "transcript_value": "Inbound",
-        "summary_value": "Customer called the company",
+        "transcript_value": "Inbound, customer called",
+        "summary_value": "The customer called the company",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -182,7 +207,7 @@
       },
       {
         "field": "third_party_authority",
-        "transcript_value": "",
+        "transcript_value": "Account holder spoke; no third party",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -191,7 +216,7 @@
       {
         "field": "account_status",
         "transcript_value": "One missed instalment, arrears",
-        "summary_value": "Arrears discussed",
+        "summary_value": "arrears were discussed",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -203,14 +228,14 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Rent rise of £180 monthly",
-        "summary_value": "£180 monthly rent increase",
+        "transcript_value": "Rent rise of £180 a month left too little in bank",
+        "summary_value": "£180 monthly rent increase caused the missed instalment",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T08",
-            "quote": "put the rent up by a hundred and eighty pounds"
+            "quote": "put the rent up by a hundred and eighty pounds a month"
           }
         ]
       },
@@ -224,7 +249,7 @@
       },
       {
         "field": "consent_to_record_vulnerability",
-        "transcript_value": "",
+        "transcript_value": "Not discussed",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -232,10 +257,10 @@
       },
       {
         "field": "income_and_expenditure",
-        "transcript_value": "I&E completed, about £60 surplus",
-        "summary_value": "I&E completed, £60 surplus",
+        "transcript_value": "I&E completed; customer said about £60 left",
+        "summary_value": "I&E completed with assessed monthly surplus of £60",
         "status": "match",
-        "severity": "none",
+        "severity": "minor",
         "evidence": [
           {
             "turn_id": "T14",
@@ -245,7 +270,7 @@
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "No warning",
+        "transcript_value": "No explicit warning",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -282,8 +307,8 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "£40 on 28 October via portal",
-        "summary_value": "£40 through portal on 28 October",
+        "transcript_value": "£40 on 28 October via portal; Direct Debit unchanged",
+        "summary_value": "£40 through the online portal on 28 October, Direct Debit unchanged",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -295,8 +320,8 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Check email; contact before collection if difficulty",
-        "summary_value": "Check emailed confirmation; contact before collection if difficulty",
+        "transcript_value": "Email confirmation; contact before collection if difficulty",
+        "summary_value": "Check emailed confirmation and contact company before collection if difficult",
         "status": "match",
         "severity": "none",
         "evidence": [

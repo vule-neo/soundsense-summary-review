@@ -2,26 +2,26 @@
   "call_id": "CALL-020",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:57+00:00",
+  "generated_at": "2026-11-16T15:48:10+00:00",
   "usage": {
     "input_tokens": 1451,
-    "output_tokens": 2827,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 3034,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
     "overall_verdict": "needs_correction",
-    "headline": "Summary records a £80 promise to pay on 23 October that the customer explicitly did not agree to (T16, T17, T22), and omits the risk of further action warning.",
+    "headline": "Summary wrongly records an £80 promise on 23 October that the customer explicitly said was not agreed (T16, T17, T22), and omits the risk of further action warning.",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode were verified.",
+        "explanation": "Name, DOB and address verified and security confirmed complete.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T05",
-            "quote": "Security is complete."
+            "quote": "your name, date of birth and address match. Security is complete."
           }
         ],
         "key_terms": []
@@ -30,12 +30,16 @@
         "text": "The customer called the company,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer called in; agent opened with a general greeting.",
+        "explanation": "Agent opened with a general service greeting and the customer explained their query.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T01",
-            "quote": "How can I help?"
+            "quote": "vehicle finance collections. How can I help?"
+          },
+          {
+            "turn_id": "T02",
+            "quote": "it's about my car finance account"
           }
         ],
         "key_terms": []
@@ -44,7 +48,7 @@
         "text": "arrears and a default notice were discussed,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Arrears and the default notice were discussed without stating amounts.",
+        "explanation": "Both arrears and the default notice were discussed, with no amounts stated.",
         "rule": "Arrears/Balances",
         "evidence": [
           {
@@ -60,9 +64,9 @@
       },
       {
         "text": "and emergency childcare during a three-day school closure caused a shortfall.",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "Cause is stated specifically, but the £210 childcare cost, a situational cost, is omitted. Minor.",
+        "verdict": "rule_breach",
+        "severity": "major",
+        "explanation": "The cause is correct, but the £210 childcare cost is omitted. The Situational Costs rule requires specific financial values for factors affecting ability to pay.",
         "rule": "Situational Costs",
         "evidence": [
           {
@@ -88,30 +92,30 @@
         "text": "The customer declined an I&E assessment today,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer explicitly refused the assessment.",
+        "explanation": "The customer explicitly declined the assessment.",
         "rule": "I&E Refusal",
         "evidence": [
           {
             "turn_id": "T14",
-            "quote": "I don't want to do an assessment today."
+            "quote": "No, I don't want to do an assessment today."
           }
         ],
         "key_terms": []
       },
       {
         "text": "and the agent checked understanding that neither the notice nor all arrears were resolved.",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "Agent confirmed customer understood the payment does not resolve the arrears or notice.",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The agent said the payment does not resolve the arrears or cancel the notice, and later said the customer had understood the difference. That check related mainly to the £80 versus £50 distinction, so the reviewer should confirm it.",
         "rule": "Understanding",
         "evidence": [
           {
-            "turn_id": "T23",
-            "quote": "You've understood the difference."
+            "turn_id": "T19",
+            "quote": "this payment doesn't resolve all the arrears or cancel the notice."
           },
           {
-            "turn_id": "T19",
-            "quote": "this payment doesn't resolve all the arrears or cancel the notice"
+            "turn_id": "T23",
+            "quote": "You've understood the difference."
           }
         ],
         "key_terms": []
@@ -120,7 +124,7 @@
         "text": "Payment made.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Payment was successful and no amount is stated, as required.",
+        "explanation": "The payment was successful and no amount is stated, as required.",
         "rule": "Immediate Payments",
         "evidence": [
           {
@@ -134,12 +138,16 @@
         "text": "The next steps are to read the notice, prepare income and essential expense figures and call on 23 October after work to review affordability;",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Matches the plan; the agent's 'Friday' in T25 is 23 October.",
+        "explanation": "Reading the notice, having figures ready and calling on 23 October are all in the transcript. T25 says Friday, which is 23 October (20 October is a Tuesday).",
         "rule": "Terminology",
         "evidence": [
           {
             "turn_id": "T21",
             "quote": "call on the twenty-third of October"
+          },
+          {
+            "turn_id": "T22",
+            "quote": "I'll ring after work."
           },
           {
             "turn_id": "T23",
@@ -151,7 +159,8 @@
             "text": "23 October",
             "kind": "date",
             "turn_ids": [
-              "T21"
+              "T21",
+              "T25"
             ]
           }
         ]
@@ -160,7 +169,7 @@
         "text": "the customer agreed to pay £80 on 23 October.",
         "verdict": "contradicted",
         "severity": "critical",
-        "explanation": "The customer withdrew the £80 and the agent confirmed it would not be recorded as a promise.",
+        "explanation": "The customer withdrew the £80 and the agent confirmed it would not be recorded as a promise. No promise to pay was agreed.",
         "rule": "Future Promises",
         "evidence": [
           {
@@ -200,7 +209,7 @@
       {
         "field": "call_direction",
         "transcript_value": "Inbound",
-        "summary_value": "Customer called the company",
+        "summary_value": "The customer called the company",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -212,7 +221,7 @@
       },
       {
         "field": "dpa",
-        "transcript_value": "Full DPA completed",
+        "transcript_value": "Full verification completed",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
@@ -234,7 +243,7 @@
       {
         "field": "account_status",
         "transcript_value": "Arrears and default notice discussed",
-        "summary_value": "Arrears and default notice discussed",
+        "summary_value": "arrears and a default notice were discussed",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -246,10 +255,10 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Emergency childcare (£210) during three-day school closure",
-        "summary_value": "Emergency childcare during three-day school closure",
-        "status": "match",
-        "severity": "minor",
+        "transcript_value": "Emergency childcare costing £210 during a three-day school closure",
+        "summary_value": "emergency childcare during a three-day school closure caused a shortfall",
+        "status": "mismatch",
+        "severity": "major",
         "evidence": [
           {
             "turn_id": "T10",
@@ -259,7 +268,7 @@
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "",
+        "transcript_value": "No vulnerability recorded",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -276,7 +285,7 @@
       {
         "field": "income_and_expenditure",
         "transcript_value": "Customer declined I&E",
-        "summary_value": "Customer declined I&E assessment today",
+        "summary_value": "The customer declined an I&E assessment today",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -288,7 +297,7 @@
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "Agent warned account remains at risk of further action",
+        "transcript_value": "Agent warned the account remains at risk of further action",
         "summary_value": "",
         "status": "missing_in_summary",
         "severity": "critical",
@@ -301,7 +310,7 @@
       },
       {
         "field": "signposting_and_referrals",
-        "transcript_value": "",
+        "transcript_value": "None",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -309,7 +318,7 @@
       },
       {
         "field": "forbearance_or_hold",
-        "transcript_value": "",
+        "transcript_value": "None",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -317,8 +326,8 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "£50 card payment successful",
-        "summary_value": "Payment made",
+        "transcript_value": "Card payment successful",
+        "summary_value": "Payment made.",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -330,8 +339,8 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "No promise; £80 explicitly not recorded",
-        "summary_value": "Agreed to pay £80 on 23 October",
+        "transcript_value": "No promise recorded; £80 explicitly not a promise",
+        "summary_value": "the customer agreed to pay £80 on 23 October",
         "status": "mismatch",
         "severity": "critical",
         "evidence": [
@@ -343,14 +352,14 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Read notice, have figures ready, call on 23 October",
-        "summary_value": "Read notice, prepare figures, call on 23 October after work",
+        "transcript_value": "Read the notice, have figures ready, call on 23 October",
+        "summary_value": "read the notice, prepare income and essential expense figures and call on 23 October after work",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
-            "turn_id": "T21",
-            "quote": "call on the twenty-third of October"
+            "turn_id": "T25",
+            "quote": "The next steps are to read the notice"
           }
         ]
       }
@@ -358,7 +367,7 @@
     "omissions": [
       {
         "title": "Risk of further action warning not reported",
-        "detail": "The agent explicitly warned that the account remains at risk of further action despite the payment. The rules require this phrase.",
+        "detail": "The agent explicitly warned that the account remains at risk of further action. The rules require the exact phrase.",
         "rule": "Risk of Further Action",
         "severity": "critical",
         "suggested_wording": "The customer was warned of the risk of further action.",
@@ -370,11 +379,11 @@
         ]
       },
       {
-        "title": "Childcare cost not stated",
-        "detail": "The £210 childcare cost is a situational cost affecting ability to pay and should be included.",
+        "title": "Childcare cost £210 omitted",
+        "detail": "The specific cost affecting ability to pay must be included.",
         "rule": "Situational Costs",
-        "severity": "minor",
-        "suggested_wording": "Emergency childcare costing £210 during a three-day school closure caused a shortfall.",
+        "severity": "major",
+        "suggested_wording": "Emergency childcare costing £210 during a three-day school closure left the customer short.",
         "evidence": [
           {
             "turn_id": "T10",

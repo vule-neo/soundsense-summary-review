@@ -2,23 +2,27 @@
   "call_id": "CALL-003",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:20+00:00",
+  "generated_at": "2026-11-16T15:47:28+00:00",
   "usage": {
     "input_tokens": 1510,
-    "output_tokens": 3253,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 3208,
+    "cache_read_input_tokens": 0
   },
   "analysis": {
     "overall_verdict": "needs_correction",
-    "headline": "Summary claims consent to record anxiety, but the customer refused it (T10); it also states the arrears amount and omits that the customer has no money for food.",
+    "headline": "Summary says consent was gained to record vulnerability, but the customer refused (T10); it also states the arrears amount, omits the no-food hardship, and claims an understanding check.",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode were given and verified.",
+        "explanation": "Name, DOB and address/postcode were given and the agent confirmed verification.",
         "rule": "",
         "evidence": [
+          {
+            "turn_id": "T04",
+            "quote": "Nine Rowan Crescent, Stirling, FK7 8PL."
+          },
           {
             "turn_id": "T05",
             "quote": "those details are verified"
@@ -30,12 +34,16 @@
         "text": "The customer called the company",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Agent opened with a general greeting and the customer explained their query.",
+        "explanation": "Agent opened with a general service greeting and the customer explained their query.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T01",
             "quote": "How can I help today?"
+          },
+          {
+            "turn_id": "T02",
+            "quote": "it's about the letter you've sent me"
           }
         ],
         "key_terms": []
@@ -44,7 +52,7 @@
         "text": "and arrears of £460 were discussed.",
         "verdict": "rule_breach",
         "severity": "major",
-        "explanation": "The arrears amount was stated, which the rules forbid; only 'arrears were discussed' is allowed.",
+        "explanation": "Rules forbid stating specific arrears values; the summary should say only that arrears were discussed.",
         "rule": "Arrears/Balances",
         "evidence": [
           {
@@ -64,10 +72,10 @@
       },
       {
         "text": "The customer’s partner left taking all joint savings, their zero-hour warehouse contract provided no shifts this week, and they reported anxiety;",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "Partner leaving with the savings, zero-hours contract, no shifts this week and anxiety were all stated. The warehouse mention is a generic workplace description rather than a named entity.",
-        "rule": "",
+        "verdict": "rule_breach",
+        "severity": "critical",
+        "explanation": "Facts are broadly correct, but the severe hardship of having no money for food is dropped. The summary also records anxiety, which the customer asked not to be recorded. 'Warehouse' is borderline employer detail.",
+        "rule": "Severe Hardship Specifics",
         "evidence": [
           {
             "turn_id": "T06",
@@ -75,7 +83,11 @@
           },
           {
             "turn_id": "T08",
-            "quote": "Two last week, none this week."
+            "quote": "I've got no money for food just now."
+          },
+          {
+            "turn_id": "T10",
+            "quote": "I'd rather you didn't write the health bit down."
           }
         ],
         "key_terms": []
@@ -84,12 +96,12 @@
         "text": "Consent gained to record vulnerability.",
         "verdict": "contradicted",
         "severity": "critical",
-        "explanation": "The customer explicitly declined to have the health information recorded and the agent agreed not to record it.",
+        "explanation": "The customer declined consent to record the health information and the agent agreed not to record it.",
         "rule": "Consent",
         "evidence": [
           {
             "turn_id": "T10",
-            "quote": "I'd rather you didn't write the health bit down."
+            "quote": "I don't want that in my file."
           },
           {
             "turn_id": "T11",
@@ -102,7 +114,7 @@
         "text": "The I&E assessment was deferred until the rota is available,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "I&E was postponed until the customer has their rota.",
+        "explanation": "Customer asked to do I&E once the rota is available and the agent agreed.",
         "rule": "",
         "evidence": [
           {
@@ -120,7 +132,7 @@
         "text": "the agent explained possible credit file impact,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent said the hold cannot be promised to prevent credit file impact.",
+        "explanation": "Agent said the hold cannot be promised to prevent credit file impact.",
         "rule": "",
         "evidence": [
           {
@@ -134,7 +146,7 @@
         "text": "and the customer was referred to Citizens Advice and customer signposted to the company website for support,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Citizens Advice and the company website support page were both suggested, and the required phrase is used.",
+        "explanation": "Agent named Citizens Advice and pointed to the website support page; mandated phrase is used.",
         "rule": "Signposting",
         "evidence": [
           {
@@ -152,7 +164,7 @@
         "text": "with the agent checking the customer’s understanding.",
         "verdict": "uncertain",
         "severity": "minor",
-        "explanation": "The agent asked 'Would those be useful?' and later confirmed the plan, but there was no explicit understanding check.",
+        "explanation": "The agent asked 'Would those be useful?' and checked the plan back in T23, but no explicit understanding check of the advice is clear; the reviewer should verify.",
         "rule": "Understanding",
         "evidence": [
           {
@@ -170,7 +182,7 @@
         "text": "A thirty-day hold on collection contact was applied,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent confirmed the thirty-day hold was applied.",
+        "explanation": "Agent offered and then applied the hold.",
         "rule": "",
         "evidence": [
           {
@@ -193,7 +205,7 @@
         "text": "and the next steps are to seek advice before the company calls on 4 November to review the position and complete the I&E assessment.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The call on the fourth of November is to review the position and complete I&E.",
+        "explanation": "Matches the agent's stated plan.",
         "rule": "",
         "evidence": [
           {
@@ -216,7 +228,7 @@
       {
         "field": "call_direction",
         "transcript_value": "Inbound",
-        "summary_value": "Customer called the company",
+        "summary_value": "The customer called the company",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -228,7 +240,7 @@
       },
       {
         "field": "dpa",
-        "transcript_value": "Full DPA verified",
+        "transcript_value": "Full verification completed",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
@@ -249,7 +261,7 @@
       },
       {
         "field": "account_status",
-        "transcript_value": "Two missed instalments, arrears discussed",
+        "transcript_value": "Two missed instalments discussed",
         "summary_value": "Arrears of £460 discussed",
         "status": "mismatch",
         "severity": "major",
@@ -262,8 +274,8 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Partner left with joint savings; zero-hours shifts reduced",
-        "summary_value": "Partner left taking joint savings, no shifts this week",
+        "transcript_value": "Partner left taking joint savings; zero-hours, few shifts",
+        "summary_value": "Partner left taking savings; zero-hour contract, no shifts",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -275,8 +287,8 @@
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "No money for food, anxiety and not sleeping",
-        "summary_value": "Anxiety reported; no mention of lack of money for food",
+        "transcript_value": "No money for food; anxiety",
+        "summary_value": "Anxiety reported; no food hardship",
         "status": "mismatch",
         "severity": "critical",
         "evidence": [
@@ -288,8 +300,8 @@
       },
       {
         "field": "consent_to_record_vulnerability",
-        "transcript_value": "Customer declined consent to record health information",
-        "summary_value": "Consent gained to record vulnerability",
+        "transcript_value": "Customer declined consent",
+        "summary_value": "Consent gained",
         "status": "mismatch",
         "severity": "critical",
         "evidence": [
@@ -301,20 +313,20 @@
       },
       {
         "field": "income_and_expenditure",
-        "transcript_value": "I&E deferred until rota available",
-        "summary_value": "I&E deferred until the rota is available",
+        "transcript_value": "Deferred until rota known",
+        "summary_value": "Deferred until rota available",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
-            "turn_id": "T12",
-            "quote": "Can we do it when I've got the rota?"
+            "turn_id": "T13",
+            "quote": "Yes, we can do it then."
           }
         ]
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "Not warned",
+        "transcript_value": "No explicit warning",
         "summary_value": "",
         "status": "not_in_transcript",
         "severity": "none",
@@ -322,8 +334,8 @@
       },
       {
         "field": "signposting_and_referrals",
-        "transcript_value": "Citizens Advice and website support page",
-        "summary_value": "Referred to Citizens Advice, customer signposted to website",
+        "transcript_value": "Citizens Advice and website signposting",
+        "summary_value": "Referred to Citizens Advice; customer signposted to website",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -348,7 +360,7 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "No payment taken",
+        "transcript_value": "No payment",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -361,7 +373,7 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "No promise to pay",
+        "transcript_value": "None agreed",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -374,8 +386,8 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Seek advice; company calls 4 November to review and complete I&E",
-        "summary_value": "Seek advice; call on 4 November to review and complete I&E",
+        "transcript_value": "Seek advice; call 4 November to review and complete I&E",
+        "summary_value": "Seek advice; call 4 November to review and complete I&E",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -389,7 +401,7 @@
     "omissions": [
       {
         "title": "Severe hardship (no money for food) omitted",
-        "detail": "The customer said they have no money for food and rely on their sister for shopping. The rules require severe hardship to be stated specifically.",
+        "detail": "Customer said they have no money for food and rely on their sister for shopping; rules require specific severe hardship to be reported.",
         "rule": "Severe Hardship Specifics",
         "severity": "critical",
         "suggested_wording": "Customer stated they have no money for food.",
@@ -397,19 +409,6 @@
           {
             "turn_id": "T08",
             "quote": "I've got no money for food just now."
-          }
-        ]
-      },
-      {
-        "title": "Customer declined to have vulnerability recorded",
-        "detail": "The customer asked that the health information not be recorded and the agent agreed. The summary should reflect this instead of claiming consent.",
-        "rule": "Consent",
-        "severity": "major",
-        "suggested_wording": "Customer declined consent to record the health vulnerability.",
-        "evidence": [
-          {
-            "turn_id": "T10",
-            "quote": "I'd rather you didn't write the health bit down."
           }
         ]
       }

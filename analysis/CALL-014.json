@@ -2,23 +2,27 @@
   "call_id": "CALL-014",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:43+00:00",
+  "generated_at": "2026-11-16T15:47:53+00:00",
   "usage": {
     "input_tokens": 1415,
-    "output_tokens": 2215,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2411,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
     "overall_verdict": "needs_correction",
-    "headline": "Summary says no DPA stated, but name and postcode only were given (so arguably correct), and it names the private employer Cedar Lane Distribution in breach of the redaction rule (T08).",
+    "headline": "Summary names the customer's new employer (Cedar Lane Distribution), breaching privacy redaction, and wrongly says no DPA was stated when name and postcode were taken (DOB was not).",
     "claims": [
       {
         "text": "No DPA stated with agent.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Only name and postcode were verified; no DOB, so the 'no DPA stated with agent' wording is correct.",
-        "rule": "DPA",
+        "explanation": "Only name and postcode were verified; no DOB was asked, so full DPA was not completed and the rule wording applies.",
+        "rule": "Data Protection (DPA)",
         "evidence": [
+          {
+            "turn_id": "T03",
+            "quote": "Can you give me your name and postcode so I can locate the account?"
+          },
           {
             "turn_id": "T04",
             "quote": "Luke Webb, FK7 3WX."
@@ -30,12 +34,12 @@
         "text": "The customer called the company and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer called in and the agent mentioned a missed instalment and arrears, with no amounts given.",
+        "explanation": "Customer opened by asking about their account via a general service greeting; the agent mentioned arrears without stating amounts.",
         "rule": "Account Status",
         "evidence": [
           {
-            "turn_id": "T02",
-            "quote": "it's about my car finance account"
+            "turn_id": "T01",
+            "quote": "How can I help?"
           },
           {
             "turn_id": "T07",
@@ -48,7 +52,7 @@
         "text": "A week between jobs reduced income, and the first wage payment from Cedar Lane Distribution will cover only part of a month.",
         "verdict": "rule_breach",
         "severity": "major",
-        "explanation": "The facts are correct, but the employer name is a private entity and must be redacted (e.g. 'new employer').",
+        "explanation": "Facts are correct (week between jobs, smaller first pay), but the employer name must be redacted, e.g. 'new employer'.",
         "rule": "Privacy (Entity Redaction)",
         "evidence": [
           {
@@ -57,29 +61,25 @@
           },
           {
             "turn_id": "T10",
-            "quote": "Smaller. After that it's normal monthly wages"
+            "quote": "Smaller."
           }
         ],
-        "key_terms": [
-          {
-            "text": "A week between jobs",
-            "kind": "duration",
-            "turn_ids": [
-              "T08"
-            ]
-          }
-        ]
+        "key_terms": []
       },
       {
-        "text": "An I&E assessment was planned and the agent checked the customer’s understanding;",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "An I&E was proposed for the call on the 28th, and the agent confirmed the next step with the customer.",
-        "rule": "Affordability, Advice & Compliance",
+        "text": "An I&E assessment was planned and the agent checked the customer's understanding;",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The I&E was planned for the call on the 28th (T15). The agent did ask the customer to confirm the next step and confirmed it was correct (T23-T25), which is arguably an understanding check, but this is an interpretation for the reviewer to check.",
+        "rule": "Understanding",
         "evidence": [
           {
             "turn_id": "T15",
             "quote": "We can also complete an income and expenditure assessment on that call"
+          },
+          {
+            "turn_id": "T23",
+            "quote": "Can you confirm the next step?"
           },
           {
             "turn_id": "T25",
@@ -92,7 +92,7 @@
         "text": "no payment amount was committed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The customer declined to commit to an amount and the agent said it would not be recorded as a promise.",
+        "explanation": "Agent said the £80 guess would not be recorded as a promise; the customer chose to wait for the payslip.",
         "rule": "Promises to Pay",
         "evidence": [
           {
@@ -106,12 +106,16 @@
         "text": "The next steps are for the customer to prepare income and essential expense figures and call on 28 October after work to agree an affordable arrangement.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The customer will call on the 28th after work; 28 October is consistent with the call date of 20 October.",
+        "explanation": "The customer will gather payslip and bill figures and ring on the 28th after work; 28th falls in October given the call date of 20 October.",
         "rule": "Next Steps",
         "evidence": [
           {
             "turn_id": "T24",
-            "quote": "ring you on the twenty-eighth after work to work out a payment"
+            "quote": "ring you on the twenty-eighth after work to work out a payment."
+          },
+          {
+            "turn_id": "T13",
+            "quote": "contact us on the twenty-eighth"
           }
         ],
         "key_terms": [
@@ -137,8 +141,8 @@
     "facts": [
       {
         "field": "call_direction",
-        "transcript_value": "Inbound",
-        "summary_value": "Customer called the company",
+        "transcript_value": "Inbound; customer called the company",
+        "summary_value": "The customer called the company",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -150,7 +154,7 @@
       },
       {
         "field": "dpa",
-        "transcript_value": "Name and postcode only",
+        "transcript_value": "Name and postcode only; no DOB",
         "summary_value": "No DPA stated with agent",
         "status": "match",
         "severity": "none",
@@ -163,7 +167,7 @@
       },
       {
         "field": "third_party_authority",
-        "transcript_value": "",
+        "transcript_value": "No third party",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -171,8 +175,8 @@
       },
       {
         "field": "account_status",
-        "transcript_value": "One missed instalment and arrears discussed",
-        "summary_value": "Arrears discussed",
+        "transcript_value": "One missed instalment and arrears",
+        "summary_value": "Arrears were discussed",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -184,20 +188,20 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Changed jobs with a week gap; first pay smaller",
-        "summary_value": "A week between jobs reduced income; first wage part of a month",
+        "transcript_value": "Changed jobs, week gap, first pay on the 28th is smaller",
+        "summary_value": "Week between jobs reduced income; first wage will cover part of a month (employer named)",
         "status": "match",
-        "severity": "none",
+        "severity": "minor",
         "evidence": [
           {
             "turn_id": "T08",
-            "quote": "I had a week between finishing and starting."
+            "quote": "I changed jobs, and I had a week between finishing and starting."
           }
         ]
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "None",
+        "transcript_value": "None stated",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -205,7 +209,7 @@
       },
       {
         "field": "consent_to_record_vulnerability",
-        "transcript_value": "",
+        "transcript_value": "Not discussed",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -214,13 +218,17 @@
       {
         "field": "income_and_expenditure",
         "transcript_value": "I&E to be completed on the 28th call; customer agreed",
-        "summary_value": "I&E assessment planned",
+        "summary_value": "I&E assessment was planned",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T15",
-            "quote": "We can also complete an income and expenditure assessment"
+            "quote": "We can also complete an income and expenditure assessment on that call"
+          },
+          {
+            "turn_id": "T16",
+            "quote": "Okay."
           }
         ]
       },
@@ -255,7 +263,7 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "None",
+        "transcript_value": "No payment taken",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -263,8 +271,8 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "No promise; £80 explicitly not recorded",
-        "summary_value": "No payment amount committed",
+        "transcript_value": "No promise; £80 was a guess and not recorded",
+        "summary_value": "no payment amount was committed",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -276,14 +284,14 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Customer to get payslip, gather figures and call on 28th after work",
+        "transcript_value": "Customer to get payslip and figures, call on 28 October after work",
         "summary_value": "Prepare figures and call on 28 October after work",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T24",
-            "quote": "Get my payslip, get the bill figures together"
+            "quote": "ring you on the twenty-eighth after work"
           }
         ]
       }

@@ -2,22 +2,22 @@
   "call_id": "CALL-006",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:25+00:00",
+  "generated_at": "2026-11-16T15:47:37+00:00",
   "usage": {
     "input_tokens": 1515,
-    "output_tokens": 2336,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2580,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
-    "overall_verdict": "accurate",
-    "headline": "Summary is accurate and rule-compliant: DPA, third-party authority for this call only, cause, £220 promise on 30 October and 2 November review are all supported.",
+    "overall_verdict": "minor_issues",
+    "headline": "Summary is largely accurate; minor concerns are the 'weekly to monthly wages' cause (the customer actually changed jobs and the Direct Debit came before wages) and the 'agent checked affordability' wording.",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address were verified and the agent confirmed security was complete.",
-        "rule": "",
+        "explanation": "Name, DOB and address/postcode verified and security confirmed complete.",
+        "rule": "DPA",
         "evidence": [
           {
             "turn_id": "T05",
@@ -30,34 +30,34 @@
         "text": "The customer called the company with their mother, whose Authority to Act was verified for this call only, and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer called in, the mother joined, authority was given for this call only, and arrears were discussed without stating amounts.",
+        "explanation": "The customer spoke first to ask about the account (inbound). The mother joined, authority was verified for this call only, and the missed instalment and arrears were discussed. No arrears amount is given.",
         "rule": "Authority to Act",
         "evidence": [
           {
-            "turn_id": "T01",
-            "quote": "How can I help?"
-          },
-          {
-            "turn_id": "T09",
-            "quote": "I'll record permission for this call only."
+            "turn_id": "T02",
+            "quote": "it's about my car finance account"
           },
           {
             "turn_id": "T11",
             "quote": "Authority to Act has been verified for this call."
+          },
+          {
+            "turn_id": "T09",
+            "quote": "I'll record permission for this call only."
           }
         ],
         "key_terms": []
       },
       {
         "text": "A change from weekly to monthly wages caused the missed instalment.",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "The customer started a new job paying monthly instead of weekly and mistimed the payment; the Direct Debit came out before wages.",
-        "rule": "Specificity",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "Customer said the new job pays monthly rather than weekly and she miscounted dates; the mother said the Direct Debit came out before wages. The summary omits the new job and the Direct Debit timing, so it is slightly generalised. Reviewer should check the wording.",
+        "rule": "Specificity (No Generalization)",
         "evidence": [
           {
             "turn_id": "T12",
-            "quote": "Old place paid weekly, this one's monthly."
+            "quote": "I started the new job last month. Old place paid weekly, this one's monthly."
           },
           {
             "turn_id": "T10",
@@ -68,14 +68,14 @@
       },
       {
         "text": "The agent checked affordability and the customer’s understanding,",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "The agent asked about affordability for food, rent and travel and asked the customer to explain their understanding.",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The agent asked about comfort with food, rent and travel (T16) and customer confirmed (T17). The agent also asked for the customer's understanding (T21). This is not a full I&E, so 'checked affordability' is a mild strengthening.",
         "rule": "Understanding",
         "evidence": [
           {
             "turn_id": "T16",
-            "quote": "Are you comfortable that leaves enough for food, rent and travel"
+            "quote": "Are you comfortable that leaves enough for food, rent and travel until your next pay?"
           },
           {
             "turn_id": "T21",
@@ -85,10 +85,10 @@
         "key_terms": []
       },
       {
-        "text": "and the customer agreed to pay £220 by bank transfer on 30 October using their account reference, with the regular schedule unchanged.",
+        "text": "and the customer agreed to pay £220 by bank transfer on 30 October using their account reference,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Final agreed promise is £220 on 30 October by bank transfer with the account reference; regular payments are unchanged.",
+        "explanation": "Amount, date, method and reference match the final agreed position.",
         "rule": "Future Promises",
         "evidence": [
           {
@@ -96,12 +96,8 @@
             "quote": "two hundred and twenty pounds, on the thirtieth of October. By bank transfer."
           },
           {
-            "turn_id": "T19",
-            "quote": "The regular schedule remains unchanged."
-          },
-          {
-            "turn_id": "T20",
-            "quote": "I'll use the reference from the letter."
+            "turn_id": "T22",
+            "quote": "I'll transfer two hundred and twenty on the thirtieth with my account reference."
           }
         ],
         "key_terms": [
@@ -123,11 +119,25 @@
         ]
       },
       {
+        "text": "with the regular schedule unchanged.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent confirmed the regular schedule remains unchanged.",
+        "rule": "",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "The regular schedule remains unchanged."
+          }
+        ],
+        "key_terms": []
+      },
+      {
         "text": "The next steps are for the company to review receipt on 2 November and contact the customer if the transfer has not arrived.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent said they will review receipt on 2 November and make contact if the transfer has not arrived.",
-        "rule": "Next Steps",
+        "explanation": "Matches the agent's statement.",
+        "rule": "Terminology",
         "evidence": [
           {
             "turn_id": "T23",
@@ -148,21 +158,21 @@
     "facts": [
       {
         "field": "call_direction",
-        "transcript_value": "Inbound",
-        "summary_value": "Customer called the company",
+        "transcript_value": "Inbound: customer called.",
+        "summary_value": "The customer called the company",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T02",
-            "quote": "Have I come through to the right team?"
+            "quote": "it's about my car finance account"
           }
         ]
       },
       {
         "field": "dpa",
-        "transcript_value": "Completed",
-        "summary_value": "DPA completed",
+        "transcript_value": "Completed.",
+        "summary_value": "DPA completed.",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -174,8 +184,8 @@
       },
       {
         "field": "third_party_authority",
-        "transcript_value": "Mother, authority verified for this call only",
-        "summary_value": "Authority verified for this call only",
+        "transcript_value": "Mother joined, authority verified for this call only.",
+        "summary_value": "Authority to Act verified for this call only",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -187,23 +197,23 @@
       },
       {
         "field": "account_status",
-        "transcript_value": "One missed instalment, arrears discussed",
-        "summary_value": "Arrears discussed",
+        "transcript_value": "One missed instalment; arrears discussed.",
+        "summary_value": "arrears were discussed",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T11",
-            "quote": "arrears were discussed with your daughter"
+            "quote": "There's one missed instalment on the account"
           }
         ]
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "New job paid monthly rather than weekly; Direct Debit before wages",
-        "summary_value": "Change from weekly to monthly wages",
+        "transcript_value": "New monthly-paid job; Direct Debit came before wages; customer got dates wrong.",
+        "summary_value": "A change from weekly to monthly wages caused the missed instalment.",
         "status": "match",
-        "severity": "none",
+        "severity": "minor",
         "evidence": [
           {
             "turn_id": "T12",
@@ -213,7 +223,7 @@
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "None",
+        "transcript_value": "None disclosed.",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -221,7 +231,7 @@
       },
       {
         "field": "consent_to_record_vulnerability",
-        "transcript_value": "Not discussed",
+        "transcript_value": "Not discussed.",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -229,10 +239,10 @@
       },
       {
         "field": "income_and_expenditure",
-        "transcript_value": "Affordability checked, no full I&E",
-        "summary_value": "Agent checked affordability",
+        "transcript_value": "Brief affordability check only, no full I&E.",
+        "summary_value": "The agent checked affordability",
         "status": "match",
-        "severity": "none",
+        "severity": "minor",
         "evidence": [
           {
             "turn_id": "T16",
@@ -242,7 +252,7 @@
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "Not warned",
+        "transcript_value": "No warning given.",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -250,7 +260,7 @@
       },
       {
         "field": "signposting_and_referrals",
-        "transcript_value": "None",
+        "transcript_value": "None.",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -258,7 +268,7 @@
       },
       {
         "field": "forbearance_or_hold",
-        "transcript_value": "None",
+        "transcript_value": "None.",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -266,7 +276,7 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "No payment taken",
+        "transcript_value": "No payment taken.",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -274,7 +284,7 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "£220 on 30 October by bank transfer",
+        "transcript_value": "£220 by bank transfer on 30 October.",
         "summary_value": "£220 by bank transfer on 30 October",
         "status": "match",
         "severity": "none",
@@ -287,8 +297,8 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Review receipt on 2 November, contact if not arrived",
-        "summary_value": "Review receipt on 2 November and contact if not arrived",
+        "transcript_value": "Review receipt on 2 November and contact if not arrived.",
+        "summary_value": "review receipt on 2 November and contact the customer",
         "status": "match",
         "severity": "none",
         "evidence": [

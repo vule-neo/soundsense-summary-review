@@ -2,21 +2,21 @@
   "call_id": "CALL-005",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:13+00:00",
+  "generated_at": "2026-11-16T15:47:24+00:00",
   "usage": {
     "input_tokens": 1438,
-    "output_tokens": 2065,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2359,
+    "cache_read_input_tokens": 0
   },
   "analysis": {
-    "overall_verdict": "accurate",
-    "headline": "Summary is accurate and rule-compliant; all claims are supported by the transcript.",
+    "overall_verdict": "minor_issues",
+    "headline": "Summary is largely accurate; only the claim that the agent 'checked the customer's understanding' is a loose inference (T22-T23).",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address verified.",
+        "explanation": "Name, DOB and address/postcode were verified and the agent confirmed security was complete.",
         "rule": "",
         "evidence": [
           {
@@ -30,12 +30,16 @@
         "text": "The company called and reached the customer, and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Agent opened asking for the customer; arrears mentioned without amounts.",
-        "rule": "Arrears/Balances",
+        "explanation": "The agent opened by asking for the customer, who confirmed identity. The agent mentioned arrears without stating figures.",
+        "rule": "",
         "evidence": [
           {
             "turn_id": "T01",
             "quote": "could I speak to Daniel Ellis, please?"
+          },
+          {
+            "turn_id": "T02",
+            "quote": "That's me. Yes, speaking."
           },
           {
             "turn_id": "T07",
@@ -48,7 +52,7 @@
         "text": "A turbo failure costing £800 used the funds set aside for the instalment.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Repair cost and use of funds confirmed; the cost is correctly included.",
+        "explanation": "The customer said the £800 turbo repair used the money put aside for this payment.",
         "rule": "Situational Costs",
         "evidence": [
           {
@@ -72,14 +76,18 @@
       },
       {
         "text": "The agent checked the customer’s understanding,",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "Agent confirmed the position with the customer.",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The agent recapped the position (T22) and the customer confirmed (T23), which is a confirmation of the position. The customer also said thanks for explaining (T25). It is not an explicit understanding check on advice, so the reviewer should decide.",
         "rule": "Understanding",
         "evidence": [
           {
             "turn_id": "T22",
             "quote": "Just to check, the card attempt failed today"
+          },
+          {
+            "turn_id": "T23",
+            "quote": "That's right. No payment's gone through."
           }
         ],
         "key_terms": []
@@ -88,9 +96,13 @@
         "text": "and the agent attempted to take a card payment, but it was declined.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Attempt made and declined; no amount stated.",
+        "explanation": "The agent set up a secure card payment attempt, which was declined. No amount is stated, which is compliant.",
         "rule": "Payment Attempts",
         "evidence": [
+          {
+            "turn_id": "T13",
+            "quote": "We can try the secure payment system."
+          },
           {
             "turn_id": "T16",
             "quote": "the system has returned a decline"
@@ -102,9 +114,13 @@
         "text": "The next steps are for the customer to contact their bank about the decline and for the company to call on 21 October after 1 pm to review the position;",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Call tomorrow (21 Oct) after one; customer to contact bank.",
+        "explanation": "The customer will ring the bank and a call is arranged for 21 October after one in the afternoon.",
         "rule": "Next Steps",
         "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "I can ring the bank this afternoon."
+          },
           {
             "turn_id": "T20",
             "quote": "tomorrow, the twenty-first of October"
@@ -126,7 +142,8 @@
             "text": "after 1 pm",
             "kind": "time",
             "turn_ids": [
-              "T22"
+              "T22",
+              "T23"
             ]
           }
         ]
@@ -135,8 +152,8 @@
         "text": "no future payment was agreed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Confirmed no payment arrangement.",
-        "rule": "",
+        "explanation": "The customer declined to promise a payment, and the agent confirmed there is no payment arrangement.",
+        "rule": "Future Promises",
         "evidence": [
           {
             "turn_id": "T24",
@@ -150,7 +167,7 @@
       {
         "field": "call_direction",
         "transcript_value": "Outbound",
-        "summary_value": "Company called customer",
+        "summary_value": "Company called the customer",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -162,7 +179,7 @@
       },
       {
         "field": "dpa",
-        "transcript_value": "Completed",
+        "transcript_value": "Full verification completed",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
@@ -183,33 +200,33 @@
       },
       {
         "field": "account_status",
-        "transcript_value": "Arrears discussed",
-        "summary_value": "arrears were discussed",
+        "transcript_value": "Arrears from a missed instalment",
+        "summary_value": "Arrears discussed",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T07",
-            "quote": "There are arrears"
+            "quote": "There are arrears following the missed instalment."
           }
         ]
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Turbo failure £800 used set-aside funds",
-        "summary_value": "Turbo failure costing £800 used funds",
+        "transcript_value": "£800 turbo repair used the funds set aside",
+        "summary_value": "Turbo failure costing £800 used the funds",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T10",
-            "quote": "that used the money I'd put aside"
+            "quote": "that used the money I'd put aside for this payment"
           }
         ]
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "None",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -225,7 +242,7 @@
       },
       {
         "field": "income_and_expenditure",
-        "transcript_value": "Not discussed",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -233,7 +250,7 @@
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "No warning",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -241,7 +258,7 @@
       },
       {
         "field": "signposting_and_referrals",
-        "transcript_value": "None",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -249,7 +266,7 @@
       },
       {
         "field": "forbearance_or_hold",
-        "transcript_value": "None",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -257,8 +274,8 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "Card attempt declined",
-        "summary_value": "attempted card payment, declined",
+        "transcript_value": "Card payment attempted and declined",
+        "summary_value": "Attempted card payment, declined",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -270,21 +287,21 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "None agreed",
-        "summary_value": "no future payment was agreed",
+        "transcript_value": "No promise made",
+        "summary_value": "No future payment agreed",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
-            "turn_id": "T24",
-            "quote": "no confirmed payment arrangement"
+            "turn_id": "T19",
+            "quote": "I don't want to promise another payment"
           }
         ]
       },
       {
         "field": "next_steps",
-        "transcript_value": "Customer to contact bank; call 21 Oct after 1 pm",
-        "summary_value": "Same",
+        "transcript_value": "Customer to contact the bank; call on 21 October after 1 pm",
+        "summary_value": "Customer to contact bank; company to call 21 October after 1 pm",
         "status": "match",
         "severity": "none",
         "evidence": [

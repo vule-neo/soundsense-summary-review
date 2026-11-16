@@ -2,41 +2,55 @@
   "call_id": "CALL-015",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:44+00:00",
+  "generated_at": "2026-11-16T15:47:54+00:00",
   "usage": {
     "input_tokens": 1471,
-    "output_tokens": 2254,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2687,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
     "overall_verdict": "needs_correction",
-    "headline": "Summary omits the explicit 'risk of further action' warning given by the agent (T13, T15), a mandatory element.",
+    "headline": "Summary omits the explicit risk of further action warning (T13, T15) and the customer's deferral of the I&E assessment; otherwise facts are accurate.",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address verified.",
+        "explanation": "Name, DOB and address/postcode were given and confirmed.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T05",
-            "quote": "your name, date of birth and address match"
+            "quote": "your name, date of birth and address match. Security is complete."
           }
         ],
         "key_terms": []
       },
       {
-        "text": "The company called and reached the customer, and arrears were discussed.",
+        "text": "The company called and reached the customer,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Agent called and spoke to the customer; arrears discussed without amounts.",
+        "explanation": "Agent opened asking for the customer and she confirmed identity.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T01",
             "quote": "I'm calling from vehicle finance collections."
           },
+          {
+            "turn_id": "T02",
+            "quote": "That's me. Yes, speaking."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "and arrears were discussed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent confirmed arrears after two missed instalments, with no amounts stated in the summary.",
+        "rule": "Arrears/Balances",
+        "evidence": [
           {
             "turn_id": "T07",
             "quote": "there are arrears after two missed instalments"
@@ -48,12 +62,12 @@
         "text": "Loss of an evening cleaning job reduced monthly income by £250, while the daytime job continued.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer lost the evening cleaning job worth about £250 a month and kept the daytime job.",
-        "rule": "",
+        "explanation": "Customer lost the evening cleaning job worth about £250 a month and kept the daytime job. The employer is not named.",
+        "rule": "Situational Costs",
         "evidence": [
           {
             "turn_id": "T08",
-            "quote": "about two hundred and fifty pounds a month"
+            "quote": "I was cleaning evenings, about two hundred and fifty pounds a month"
           },
           {
             "turn_id": "T08",
@@ -71,15 +85,15 @@
         ]
       },
       {
-        "text": "An I&E assessment was arranged and the agent checked understanding that the assessment does not clear the missed payments.",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "I&E deferred to a call-back, and the agent checked understanding. The risk-of-further-action warning is missing from this section.",
-        "rule": "Risk of Further Action",
+        "text": "An I&E assessment was arranged",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The I&E was offered now but the customer deferred it to a later call. It is arranged for later, not completed, and the deferral is not made clear. Reviewer should check the wording.",
+        "rule": "Affordability, Advice & Compliance",
         "evidence": [
           {
-            "turn_id": "T17",
-            "quote": "do you understand that arranging an assessment doesn't clear the missed payments?"
+            "turn_id": "T12",
+            "quote": "Not now. I've got a meeting in a few minutes."
           },
           {
             "turn_id": "T13",
@@ -89,19 +103,37 @@
         "key_terms": []
       },
       {
-        "text": "The next steps are for the customer to prepare remaining income and essential expense figures for the company’s call on 22 October after 6 pm; no payment amount was agreed.",
+        "text": "and the agent checked understanding that the assessment does not clear the missed payments.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Thursday is 22 October; call after six; figures to be prepared; no payment agreed.",
-        "rule": "",
+        "explanation": "Agent asked whether the customer understood and she confirmed.",
+        "rule": "Understanding",
         "evidence": [
+          {
+            "turn_id": "T17",
+            "quote": "do you understand that arranging an assessment doesn't clear the missed payments?"
+          },
+          {
+            "turn_id": "T18",
+            "quote": "I know the money's still outstanding."
+          }
+        ],
+        "key_terms": []
+      },
+      {
+        "text": "The next steps are for the customer to prepare remaining income and essential expense figures for the company’s call on 22 October after 6 pm;",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Call requested for 22 October (Thursday) after six, and the customer is to have figures ready.",
+        "rule": "Next Steps",
+        "evidence": [
+          {
+            "turn_id": "T13",
+            "quote": "a call for the twenty-second of October after six"
+          },
           {
             "turn_id": "T23",
             "quote": "Have the figures for your remaining income and essential costs ready."
-          },
-          {
-            "turn_id": "T19",
-            "quote": "We haven't agreed a payment amount on this call"
           }
         ],
         "key_terms": [
@@ -116,18 +148,32 @@
             "text": "6 pm",
             "kind": "time",
             "turn_ids": [
-              "T12",
-              "T13"
+              "T13",
+              "T12"
             ]
           }
         ]
+      },
+      {
+        "text": "no payment amount was agreed.",
+        "verdict": "supported",
+        "severity": "none",
+        "explanation": "Agent stated no payment amount was agreed.",
+        "rule": "Future Promises",
+        "evidence": [
+          {
+            "turn_id": "T19",
+            "quote": "We haven't agreed a payment amount on this call"
+          }
+        ],
+        "key_terms": []
       }
     ],
     "facts": [
       {
         "field": "call_direction",
         "transcript_value": "Outbound",
-        "summary_value": "Company called the customer",
+        "summary_value": "The company called the customer",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -139,7 +185,7 @@
       },
       {
         "field": "dpa",
-        "transcript_value": "Completed",
+        "transcript_value": "Full DPA completed",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
@@ -173,7 +219,7 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Lost evening cleaning job, £250 a month",
+        "transcript_value": "Lost evening cleaning job worth about £250 a month",
         "summary_value": "Loss of evening cleaning job reduced income by £250",
         "status": "match",
         "severity": "none",
@@ -186,7 +232,7 @@
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "No vulnerability",
+        "transcript_value": "None stated",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -202,20 +248,20 @@
       },
       {
         "field": "income_and_expenditure",
-        "transcript_value": "I&E deferred to call on 22 October",
+        "transcript_value": "I&E offered; customer deferred to Thursday call",
         "summary_value": "I&E assessment arranged",
         "status": "match",
-        "severity": "none",
+        "severity": "minor",
         "evidence": [
           {
             "turn_id": "T12",
-            "quote": "I can do that Thursday evening"
+            "quote": "I can do that Thursday evening if you can ring after six."
           }
         ]
       },
       {
         "field": "risk_of_further_action",
-        "transcript_value": "Agent explicitly warned account at risk of further action",
+        "transcript_value": "Agent explicitly warned account is at risk of further action",
         "summary_value": "",
         "status": "missing_in_summary",
         "severity": "critical",
@@ -228,7 +274,7 @@
       },
       {
         "field": "signposting_and_referrals",
-        "transcript_value": "None",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -236,7 +282,7 @@
       },
       {
         "field": "forbearance_or_hold",
-        "transcript_value": "None",
+        "transcript_value": "",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -244,7 +290,7 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "None",
+        "transcript_value": "No payment",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
@@ -252,8 +298,8 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "No payment agreed",
-        "summary_value": "No payment amount was agreed",
+        "transcript_value": "No payment amount agreed",
+        "summary_value": "No payment amount agreed",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -265,14 +311,14 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Call on 22 October after 6 pm; customer to prepare figures",
-        "summary_value": "Customer to prepare figures for call on 22 October after 6 pm",
+        "transcript_value": "Call 22 October after six for I&E; customer to prepare figures",
+        "summary_value": "Customer to prepare figures for call 22 October after 6 pm",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T13",
-            "quote": "twenty-second of October after six"
+            "quote": "a call for the twenty-second of October after six"
           }
         ]
       }
@@ -280,10 +326,10 @@
     "omissions": [
       {
         "title": "Risk of further action warning not reported",
-        "detail": "The agent explicitly warned the account was at risk of further action and clarified it in T15; the rules require this phrase to be stated.",
+        "detail": "The agent explicitly warned the account is at risk of further action and clarified it when the customer queried it. The rules require this phrase.",
         "rule": "Risk of Further Action",
         "severity": "critical",
-        "suggested_wording": "The customer was warned of the risk of further action if the arrears remain unresolved.",
+        "suggested_wording": "Customer was warned of the risk of further action if the arrears remain unresolved.",
         "evidence": [
           {
             "turn_id": "T13",

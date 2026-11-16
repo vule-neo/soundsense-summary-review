@@ -2,11 +2,11 @@
   "call_id": "CALL-017",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:53+00:00",
+  "generated_at": "2026-11-16T15:48:05+00:00",
   "usage": {
     "input_tokens": 1438,
-    "output_tokens": 2645,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2821,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
     "overall_verdict": "needs_correction",
@@ -16,12 +16,12 @@
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode were verified.",
+        "explanation": "Name, DOB and address were verified.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T05",
-            "quote": "Security is complete."
+            "quote": "your name, date of birth and address match. Security is complete."
           }
         ],
         "key_terms": []
@@ -30,12 +30,12 @@
         "text": "The company called and reached the customer, and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent called and spoke to the customer, and arrears were mentioned without any amount.",
+        "explanation": "The agent opened the call asking for the customer, who confirmed it was her. Arrears were discussed without amounts.",
         "rule": "",
         "evidence": [
           {
             "turn_id": "T01",
-            "quote": "I'm calling from vehicle finance collections."
+            "quote": "could I speak to Alison Young, please? I'm calling from vehicle finance collections."
           },
           {
             "turn_id": "T07",
@@ -48,9 +48,13 @@
         "text": "Consent gained to record vulnerability.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent asked to record the bereavement and frozen account, and the customer agreed.",
+        "explanation": "The agent asked permission to record the bereavement and frozen account, and the customer agreed.",
         "rule": "Consent",
         "evidence": [
+          {
+            "turn_id": "T11",
+            "quote": "Would you be comfortable with me recording the bereavement and the frozen account"
+          },
           {
             "turn_id": "T12",
             "quote": "Yes, you can write that down."
@@ -62,12 +66,16 @@
         "text": "The customer was referred to Citizens Advice,",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent suggested Citizens Advice and the customer agreed.",
+        "explanation": "The agent suggested Citizens Advice and the customer agreed to contact them.",
         "rule": "External Advice",
         "evidence": [
           {
             "turn_id": "T17",
             "quote": "Citizens Advice can help you understand what support is available"
+          },
+          {
+            "turn_id": "T18",
+            "quote": "Yes. I'll look up the local office"
           }
         ],
         "key_terms": []
@@ -76,12 +84,16 @@
         "text": "and the agent checked understanding that a contact hold does not cancel the arrears.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent checked that the customer understood the difference between the hold and the money owed.",
+        "explanation": "The agent checked understanding and the customer confirmed.",
         "rule": "Understanding",
         "evidence": [
           {
             "turn_id": "T23",
             "quote": "Does the difference between the contact hold and the money still owed make sense?"
+          },
+          {
+            "turn_id": "T24",
+            "quote": "You're pausing the calls for a bit, not cancelling the debt."
           }
         ],
         "key_terms": []
@@ -117,12 +129,12 @@
         "text": "the next steps are to seek advice and update the company if bank access changes before the company’s review call on 3 November;",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The review call on 3 November is confirmed, and the customer can contact the company sooner if the bank gives information.",
+        "explanation": "The customer will seek advice and contact the company if the bank gives information sooner. The review call is on 3 November.",
         "rule": "Next steps",
         "evidence": [
           {
             "turn_id": "T19",
-            "quote": "We'll call on the third of November"
+            "quote": "We'll call on the third of November to review"
           },
           {
             "turn_id": "T21",
@@ -134,7 +146,8 @@
             "text": "3 November",
             "kind": "date",
             "turn_ids": [
-              "T19"
+              "T19",
+              "T20"
             ]
           }
         ]
@@ -143,7 +156,7 @@
         "text": "no payment commitment was made.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "The agent and customer confirmed that no payment amount or date was agreed.",
+        "explanation": "The agent confirmed that no amount or date for a payment was agreed.",
         "rule": "",
         "evidence": [
           {
@@ -183,15 +196,20 @@
       },
       {
         "field": "third_party_authority",
-        "transcript_value": "",
+        "transcript_value": "Account holder spoke",
         "summary_value": "",
         "status": "not_applicable",
         "severity": "none",
-        "evidence": []
+        "evidence": [
+          {
+            "turn_id": "T02",
+            "quote": "That's me. Yes, speaking."
+          }
+        ]
       },
       {
         "field": "account_status",
-        "transcript_value": "Missed instalment in arrears",
+        "transcript_value": "Missed instalment, arrears",
         "summary_value": "Arrears discussed",
         "status": "match",
         "severity": "none",
@@ -204,7 +222,7 @@
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Joint account frozen by bank after mother's death",
+        "transcript_value": "Bereavement of mother; joint account frozen by bank",
         "summary_value": "",
         "status": "missing_in_summary",
         "severity": "critical",
@@ -217,21 +235,21 @@
       },
       {
         "field": "hardship_and_vulnerability",
-        "transcript_value": "Bereavement and frozen account",
-        "summary_value": "Consent gained to record vulnerability (vulnerability not stated)",
-        "status": "missing_in_summary",
+        "transcript_value": "Bereavement and frozen joint account",
+        "summary_value": "Only consent to record vulnerability; vulnerability not stated",
+        "status": "mismatch",
         "severity": "critical",
         "evidence": [
           {
-            "turn_id": "T06",
-            "quote": "My mam died last month"
+            "turn_id": "T11",
+            "quote": "recording the bereavement and the frozen account"
           }
         ]
       },
       {
         "field": "consent_to_record_vulnerability",
         "transcript_value": "Consent given",
-        "summary_value": "Consent gained to record vulnerability.",
+        "summary_value": "Consent gained to record vulnerability",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -245,7 +263,7 @@
         "field": "income_and_expenditure",
         "transcript_value": "No I&E discussed",
         "summary_value": "",
-        "status": "not_applicable",
+        "status": "not_in_transcript",
         "severity": "none",
         "evidence": []
       },
@@ -253,13 +271,13 @@
         "field": "risk_of_further_action",
         "transcript_value": "No warning given",
         "summary_value": "",
-        "status": "not_applicable",
+        "status": "not_in_transcript",
         "severity": "none",
         "evidence": []
       },
       {
         "field": "signposting_and_referrals",
-        "transcript_value": "Citizens Advice suggested; customer agreed",
+        "transcript_value": "Citizens Advice suggested and accepted",
         "summary_value": "Referred to Citizens Advice",
         "status": "match",
         "severity": "none",
@@ -285,16 +303,16 @@
       },
       {
         "field": "payment_during_call",
-        "transcript_value": "No payment",
+        "transcript_value": "No payment taken",
         "summary_value": "",
-        "status": "not_applicable",
+        "status": "not_in_transcript",
         "severity": "none",
         "evidence": []
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "None agreed",
-        "summary_value": "No payment commitment made",
+        "transcript_value": "No payment promise",
+        "summary_value": "No payment commitment was made",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -306,8 +324,8 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Review call on 3 November; customer to seek advice and contact sooner if bank info",
-        "summary_value": "Seek advice, update if bank access changes, review call 3 November",
+        "transcript_value": "Review call on 3 November; customer to seek advice and contact earlier if bank info",
+        "summary_value": "Seek advice, update company, review call on 3 November",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -320,11 +338,11 @@
     ],
     "omissions": [
       {
-        "title": "Bereavement and frozen joint account not stated",
-        "detail": "The customer's mother died and the bank froze the joint account holding the car payment. This is the reason for non-payment and a severe hardship, and the summary only says consent was gained without stating what was recorded.",
+        "title": "Bereavement and frozen joint account not reported",
+        "detail": "The cause of non-payment and the vulnerability were a bereavement and the bank freezing a joint account. The rules require specific hardship details and the stated vulnerability.",
         "rule": "Severe Hardship Specifics",
         "severity": "critical",
-        "suggested_wording": "Customer reported a bereavement, and the bank has frozen the joint account used for the car payment. Consent gained to record vulnerability.",
+        "suggested_wording": "Customer's mother died last month and the bank froze the joint account used for the car payment pending paperwork; consent gained to record vulnerability.",
         "evidence": [
           {
             "turn_id": "T08",

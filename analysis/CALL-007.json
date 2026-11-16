@@ -2,26 +2,30 @@
   "call_id": "CALL-007",
   "model": "claude-sonnet-5-5",
   "effort": "medium",
-  "generated_at": "2026-11-16T15:26:26+00:00",
+  "generated_at": "2026-11-16T15:47:36+00:00",
   "usage": {
     "input_tokens": 1436,
-    "output_tokens": 2106,
-    "cache_read_input_tokens": 7727
+    "output_tokens": 2300,
+    "cache_read_input_tokens": 8138
   },
   "analysis": {
-    "overall_verdict": "accurate",
-    "headline": "Summary is accurate and rule-compliant; all key facts (DPA, outbound call, payment made, DD from 16 November, email check within three working days) are supported.",
+    "overall_verdict": "minor_issues",
+    "headline": "Summary is largely accurate and rule-compliant; only the claim that the agent checked understanding is uncertain, since the customer recapped and the agent confirmed (T23-T24).",
     "claims": [
       {
         "text": "DPA completed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Name, DOB and address/postcode verified.",
+        "explanation": "Name, DOB and address/postcode were given and confirmed as matching.",
         "rule": "DPA",
         "evidence": [
           {
+            "turn_id": "T04",
+            "quote": "Ben Brooks, fourth of August nineteen seventy-nine. 17 Ash Street, London, SE13 5GH."
+          },
+          {
             "turn_id": "T05",
-            "quote": "your name, date of birth and address match. Security is complete."
+            "quote": "Security is complete."
           }
         ],
         "key_terms": []
@@ -30,12 +34,16 @@
         "text": "The company called and reached the customer, and arrears were discussed.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Agent opened the call asking for the customer, who confirmed; the missed instalment/arrears was discussed, with no amount stated.",
-        "rule": "Arrears/Balances",
+        "explanation": "Agent opened by asking for the customer and the customer confirmed; a missed instalment in arrears was discussed, with no amounts stated in the summary.",
+        "rule": "Contact Outcome",
         "evidence": [
           {
             "turn_id": "T01",
-            "quote": "could I speak to Ben Brooks, please?"
+            "quote": "Hello, could I speak to Ben Brooks, please?"
+          },
+          {
+            "turn_id": "T02",
+            "quote": "That's me. Yes, speaking."
           },
           {
             "turn_id": "T07",
@@ -48,7 +56,7 @@
         "text": "A bank change was not saved after the customer lost signal, leaving the Direct Debit linked to the old account.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Customer's online bank detail update did not save after losing signal; old account still attached.",
+        "explanation": "The customer lost phone signal on the train while submitting the form, and the agent confirmed the old account was still attached.",
         "rule": "Specificity",
         "evidence": [
           {
@@ -64,9 +72,9 @@
       },
       {
         "text": "The agent checked the customer’s understanding;",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "Customer summarised the plan and the agent confirmed it.",
+        "verdict": "uncertain",
+        "severity": "minor",
+        "explanation": "The customer summarised the plan and the agent confirmed it, rather than the agent checking understanding. The reviewer should decide whether this counts as an understanding check.",
         "rule": "Understanding",
         "evidence": [
           {
@@ -81,26 +89,16 @@
         "key_terms": []
       },
       {
-        "text": "Payment made,",
+        "text": "Payment made, and a new Direct Debit instruction was set up for scheduled instalments starting on 16 November.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Card payment succeeded; no amount given, as required.",
+        "explanation": "The card payment succeeded with no amount given, and the new Direct Debit was set up to start on 16 November.",
         "rule": "Immediate Payments",
         "evidence": [
           {
             "turn_id": "T15",
             "quote": "The payment has been successful."
-          }
-        ],
-        "key_terms": []
-      },
-      {
-        "text": "and a new Direct Debit instruction was set up for scheduled instalments starting on 16 November.",
-        "verdict": "supported",
-        "severity": "none",
-        "explanation": "New DD set up for future instalments starting 16 November.",
-        "rule": "Future Promises",
-        "evidence": [
+          },
           {
             "turn_id": "T17",
             "quote": "starting on the sixteenth of November"
@@ -125,8 +123,8 @@
         "text": "The next steps are to check the emailed confirmation and call the company if it has not arrived within three working days.",
         "verdict": "supported",
         "severity": "none",
-        "explanation": "Matches the agent's instructions.",
-        "rule": "Terminology",
+        "explanation": "The agent told the customer to check the confirmation email and to call if it has not arrived within three working days.",
+        "rule": "Next Steps",
         "evidence": [
           {
             "turn_id": "T20",
@@ -152,7 +150,7 @@
       {
         "field": "call_direction",
         "transcript_value": "Outbound",
-        "summary_value": "Company called the customer",
+        "summary_value": "The company called the customer",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -164,7 +162,7 @@
       },
       {
         "field": "dpa",
-        "transcript_value": "Completed",
+        "transcript_value": "Full verification completed",
         "summary_value": "DPA completed",
         "status": "match",
         "severity": "none",
@@ -186,20 +184,20 @@
       {
         "field": "account_status",
         "transcript_value": "One missed instalment in arrears",
-        "summary_value": "Arrears discussed",
+        "summary_value": "Arrears were discussed",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T07",
-            "quote": "one missed instalment showing as arrears"
+            "quote": "There's one missed instalment showing as arrears."
           }
         ]
       },
       {
         "field": "reason_for_non_payment",
-        "transcript_value": "Bank detail change did not save after losing signal",
-        "summary_value": "Bank change not saved after losing signal",
+        "transcript_value": "Bank detail change not saved after losing signal; old account lacked funds",
+        "summary_value": "Bank change not saved after losing signal, DD linked to old account",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -272,8 +270,8 @@
       },
       {
         "field": "promise_to_pay",
-        "transcript_value": "New DD from 16 November",
-        "summary_value": "New DD from 16 November",
+        "transcript_value": "New Direct Debit for scheduled instalments from 16 November",
+        "summary_value": "New Direct Debit for scheduled instalments starting 16 November",
         "status": "match",
         "severity": "none",
         "evidence": [
@@ -285,14 +283,14 @@
       },
       {
         "field": "next_steps",
-        "transcript_value": "Check email; call if not received within three working days",
-        "summary_value": "Same",
+        "transcript_value": "Check confirmation email; call if not received within three working days",
+        "summary_value": "Check emailed confirmation and call if not arrived within three working days",
         "status": "match",
         "severity": "none",
         "evidence": [
           {
             "turn_id": "T22",
-            "quote": "within three working days"
+            "quote": "Call us if you haven't received it within three working days."
           }
         ]
       }
