@@ -31,7 +31,11 @@ export function EvidenceChips({ evidence, onFocus, source }: { evidence: Evidenc
           <button
             key={i}
             type="button"
-            onClick={() => onFocus({ turnIds: [e.turn_id], quotes: [e.quote], source: `${source}-${i}` })}
+            onClick={(ev) => {
+              // Chips live inside clickable claim cards: don't let the card re-focus the claim's first turn.
+              ev.stopPropagation();
+              onFocus({ turnIds: [e.turn_id], quotes: [e.quote], source: `${source}-${i}` });
+            }}
             title={`${evidenceTitle[e.status]}${e.ignored_turn ? " (turn marked as ASR noise)" : ""}\n“${e.quote}”`}
             className={`group inline-flex max-w-full items-center gap-1 rounded-full border px-2 py-0.5 text-xs hover:bg-sky-50 ${
               ok ? "border-slate-300 text-slate-700" : "border-red-400 bg-red-50 text-red-700"
@@ -116,7 +120,10 @@ export function IssuesList({
               <button
                 key={t}
                 type="button"
-                onClick={() => onFocus({ turnIds: [t], quotes: [], source: `chk-${chk.id}-${t}` })}
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                  onFocus({ turnIds: [t], quotes: [], source: `chk-${chk.id}-${t}` });
+                }}
                 className="rounded-full border border-slate-300 bg-white px-2 py-0.5 font-mono font-semibold text-slate-700 hover:bg-sky-50"
               >
                 {t}

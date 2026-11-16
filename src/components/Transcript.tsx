@@ -54,7 +54,16 @@ export default function Transcript({
 
   useEffect(() => {
     const first = focus?.turnIds[0];
-    if (first) refs.current[first]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    const el = first ? refs.current[first] : null;
+    if (!el) return;
+    // Scroll only the transcript panel (not the review column) so the cited turn sits mid-panel.
+    const panel = el.closest<HTMLElement>("[data-transcript-scroll]");
+    if (!panel) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    const delta = el.getBoundingClientRect().top - panel.getBoundingClientRect().top;
+    panel.scrollTo({ top: panel.scrollTop + delta - panel.clientHeight / 2 + el.clientHeight / 2, behavior: "smooth" });
   }, [focus]);
 
   const focused = new Set(focus?.turnIds ?? []);
