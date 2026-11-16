@@ -69,6 +69,18 @@ export function ClaimCard({ claim, onFocus, active, onClick }: { claim: Claim; o
       </div>
       <p className="mb-1.5 text-sm font-medium text-slate-900">“{claim.text}”</p>
       <p className="mb-2 text-sm text-slate-600">{claim.explanation}</p>
+      {claim.check_reasons?.length > 0 && (
+        <div className="mb-2 rounded-md border border-yellow-300 bg-yellow-50 px-3 py-2 text-sm">
+          <p className="font-semibold text-yellow-900">
+            Not green because{claim.ai_verdict === "supported" ? " (the AI said supported, but automatic checks disagree)" : ""}:
+          </p>
+          <ul className="mt-1 list-disc pl-5 text-yellow-900">
+            {claim.check_reasons.map((r, i) => (
+              <li key={i}>{r}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <EvidenceChips evidence={claim.evidence} onFocus={onFocus} source={`claim-${claim.text.slice(0, 20)}`} />
     </div>
   );
@@ -80,20 +92,24 @@ export function IssuesList({
   onFocus,
   onSelectClaim,
   selected,
+  include,
+  emptyText,
 }: {
   claims: Claim[];
   checks: RuleCheck[];
   onFocus: FocusFn;
   onSelectClaim: (i: number) => void;
   selected: number | null;
+  include: (c: Claim) => boolean;
+  emptyText: string;
 }) {
   const problems = claims
     .map((c, i) => ({ c, i }))
-    .filter(({ c }) => c.verdict !== "supported")
+    .filter(({ c }) => include(c))
     .sort((a, b) => SEVERITY_RANK[a.c.severity] - SEVERITY_RANK[b.c.severity]);
 
   if (!problems.length && !checks.length)
-    return <p className="rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800">No problems found in the summary text. Still confirm the fact sheet and transcript before approving.</p>;
+    return <p className="rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800">{emptyText}</p>;
 
   return (
     <div className="space-y-2">

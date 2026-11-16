@@ -75,7 +75,11 @@ export default function Home() {
 
   const onFocus = (f: Focus) => setFocus({ ...f, source: `${f.source}-${Date.now()}` });
 
-  const problemCount = analysis ? analysis.claims.filter((c) => c.verdict !== "supported").length + (call?.rule_checks.length ?? 0) : 0;
+  const isProblem = (c: Claim) => c.verdict !== "supported" && c.verdict !== "uncertain";
+  const needsCheck = (c: Claim) => c.verdict === "uncertain";
+  const problemCount = analysis ? analysis.claims.filter(isProblem).length + (call?.rule_checks.length ?? 0) : 0;
+  const checkCount = analysis ? analysis.claims.filter(needsCheck).length : 0;
+  const verifiedCount = analysis ? analysis.claims.filter((c) => c.verdict === "supported").length : 0;
 
   return (
     <div className="flex h-screen flex-col">
@@ -103,7 +107,7 @@ export default function Home() {
         >
           {sortCalls(calls).map((c) => (
             <option key={c.id} value={c.id}>
-              {c.id} — {c.counts.critical} critical, {c.counts.major} major, {c.counts.minor} minor
+              {c.id} — {c.counts.critical} critical, {c.counts.major} major, {c.counts.minor} minor, {c.counts.to_check} to check
             </option>
           ))}
         </select>
@@ -133,6 +137,16 @@ export default function Home() {
               {analysis && <p className="mt-2 text-[15px] font-medium text-slate-800">{analysis.headline}</p>}
 
               <Section title="Summary under review">
+                {analysis && (
+                  <div className="mb-2 flex flex-wrap gap-2 text-xs font-semibold">
+                    <span className="rounded bg-red-100 px-2 py-1 text-red-800">{problemCount} problem{problemCount === 1 ? "" : "s"}</span>
+                    <span className="rounded bg-yellow-200 px-2 py-1 text-yellow-900">{checkCount} to check</span>
+                    <span className="rounded bg-emerald-100 px-2 py-1 text-emerald-800">{verifiedCount} verified</span>
+                    <span className="self-center font-normal text-slate-500">
+                      Green = every detail proven by quoted transcript turns. Anything less is yellow.
+                    </span>
+                  </div>
+                )}
                 <div className="rounded-lg border border-slate-200 bg-white p-4">
                   {analysis ? (
                     <SummaryView summary={call.summary} claims={analysis.claims} selected={selectedClaim} onSelectClaim={onSelectClaim} onTerm={onTerm} />
@@ -153,7 +167,27 @@ export default function Home() {
               {analysis ? (
                 <>
                   <Section title="Problems in the summary" count={problemCount} tone={problemCount ? "bg-red-100 text-red-800" : "bg-emerald-100 text-emerald-800"}>
-                    <IssuesList claims={analysis.claims} checks={call.rule_checks} onFocus={onFocus} onSelectClaim={onSelectClaim} selected={selectedClaim} />
+                    <IssuesList
+                      claims={analysis.claims}
+                      checks={call.rule_checks}
+                      onFocus={onFocus}
+                      onSelectClaim={onSelectClaim}
+                      selected={selectedClaim}
+                      include={isProblem}
+                      emptyText="No definite errors found. Still review anything in “Needs a quick check” below."
+                    />
+                  </Section>
+
+                  <Section title="Needs a quick check (not fully proven)" count={checkCount} tone={checkCount ? "bg-yellow-200 text-yellow-900" : "bg-emerald-100 text-emerald-800"}>
+                    <IssuesList
+                      claims={analysis.claims}
+                      checks={[]}
+                      onFocus={onFocus}
+                      onSelectClaim={onSelectClaim}
+                      selected={selectedClaim}
+                      include={needsCheck}
+                      emptyText="Every remaining claim is fully proven by quoted transcript evidence."
+                    />
                   </Section>
 
                   <Section
@@ -184,7 +218,15 @@ export default function Home() {
                 </>
               ) : (
                 <Section title="Rule checks" count={call.rule_checks.length}>
-                  <IssuesList claims={[]} checks={call.rule_checks} onFocus={onFocus} onSelectClaim={() => {}} selected={null} />
+                  <IssuesList
+                    claims={[]}
+                    checks={call.rule_checks}
+                    onFocus={onFocus}
+                    onSelectClaim={() => {}}
+                    selected={null}
+                    include={() => false}
+                    emptyText="No rule-check problems."
+                  />
                 </Section>
               )}
             </>

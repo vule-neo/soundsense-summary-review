@@ -36,6 +36,10 @@ export interface Claim {
   key_terms: KeyTerm[];
   start: number | null;
   end: number | null;
+  /** Verdict the AI gave before the strict server-side gate. */
+  ai_verdict: ClaimVerdict;
+  /** Why the claim is not green (empty when verified). */
+  check_reasons: string[];
 }
 
 export interface FactRow {
@@ -82,6 +86,8 @@ export interface Counts {
   critical: number;
   major: number;
   minor: number;
+  to_check: number;
+  verified: number;
 }
 
 export interface CallListItem {

@@ -10,11 +10,11 @@ export const severityBadge: Record<Severity, string> = {
 };
 
 export const verdictLabel: Record<ClaimVerdict, string> = {
-  supported: "Supported",
+  supported: "Verified",
   contradicted: "Contradicted",
   unsupported: "Unsupported",
   rule_breach: "Rule breach",
-  uncertain: "Uncertain",
+  uncertain: "Needs check",
 };
 
 /** Highlight style for a claim span inside the summary text. */
@@ -23,7 +23,7 @@ export const verdictSpan: Record<ClaimVerdict, string> = {
   contradicted: "decoration-red-600 bg-red-100 hover:bg-red-200",
   unsupported: "decoration-orange-500 bg-orange-100 hover:bg-orange-200",
   rule_breach: "decoration-purple-600 bg-purple-100 hover:bg-purple-200",
-  uncertain: "decoration-amber-500 bg-amber-100 hover:bg-amber-200",
+  uncertain: "decoration-amber-500 decoration-dashed bg-yellow-200 hover:bg-yellow-300",
 };
 
 export const verdictChip: Record<ClaimVerdict, string> = {
@@ -31,7 +31,7 @@ export const verdictChip: Record<ClaimVerdict, string> = {
   contradicted: "bg-red-100 text-red-800",
   unsupported: "bg-orange-100 text-orange-800",
   rule_breach: "bg-purple-100 text-purple-800",
-  uncertain: "bg-amber-100 text-amber-900",
+  uncertain: "bg-yellow-200 text-yellow-900",
 };
 
 export const factStatusStyle: Record<FactStatus, { label: string; cls: string }> = {

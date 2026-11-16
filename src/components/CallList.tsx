@@ -51,7 +51,12 @@ export default function CallList({
                   <Count n={c.counts.critical} cls="bg-red-600 text-white" label="critical" />
                   <Count n={c.counts.major} cls="bg-orange-500 text-white" label="major" />
                   <Count n={c.counts.minor} cls="bg-amber-200 text-amber-900" label="minor" />
-                  {clean && v && <span className="rounded bg-emerald-100 px-1.5 text-[11px] font-bold text-emerald-800">✓ OK</span>}
+                  {c.counts.to_check > 0 && (
+                    <span title={`${c.counts.to_check} claims to check`} className="rounded bg-yellow-200 px-1.5 text-[11px] font-bold text-yellow-900">
+                      {c.counts.to_check} ?
+                    </span>
+                  )}
+                  {clean && v && !c.counts.to_check && <span className="rounded bg-emerald-100 px-1.5 text-[11px] font-bold text-emerald-800">✓ OK</span>}
                 </span>
               </div>
               {c.headline && <p className="mt-1 line-clamp-2 text-xs text-slate-500">{c.headline}</p>}
